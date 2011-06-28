@@ -22,5 +22,13 @@ Housekeeping4::Application.configure do
 
   # Only use best-standards-support built into browsers
   config.action_dispatch.best_standards_support = :builtin
+
+  # JavaScript files you want as :defaults (application.js is always included).
+  config.action_view.javascript_expansions[:defaults] = %w(jquery jquery-ui rails)
+
+  config.action_view.javascript_expansions[:jquery] = %w(jquery jquery-ui rails)
+
+  # CSS files for :960gs
+  config.action_view.stylesheet_expansions[:defaults] = %w(960gs/reset 960gs/text 960gs/960)
 end
 

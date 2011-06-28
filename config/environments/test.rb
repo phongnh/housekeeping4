@@ -32,4 +32,13 @@ Housekeeping4::Application.configure do
 
   # Print deprecation notices to the stderr
   config.active_support.deprecation = :stderr
+
+  # JavaScript files you want as :defaults (application.js is always included).
+  config.action_view.javascript_expansions[:defaults] = %w(jquery jquery-ui rails)
+
+  config.action_view.javascript_expansions[:jquery] = %w(jquery jquery-ui rails)
+
+  # CSS files for :960gs
+  config.action_view.stylesheet_expansions[:defaults] = %w(960gs/reset 960gs/text 960gs/960)
 end
+

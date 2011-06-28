@@ -35,7 +35,10 @@ module Housekeeping4
     # config.i18n.default_locale = :de
 
     # JavaScript files you want as :defaults (application.js is always included).
-    config.action_view.javascript_expansions[:defaults] = %w()
+    #config.action_view.javascript_expansions[:defaults] = %w(jquery.min jquery-ui.min rails)
+
+    # CSS files for :960gs
+    #config.action_view.stylesheet_expansions[:defaults] = %w(960gs/min/reset 960gs/min/text 960gs/min/960)
 
     # Configure the default encoding used in templates for Ruby 1.9.
     config.encoding = "utf-8"
