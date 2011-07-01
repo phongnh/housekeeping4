@@ -1,4 +1,12 @@
 Housekeeping4::Application.routes.draw do
+
+  root :to => "app/dashboard#index" 
+
+  namespace :app do
+    root :to => "dashboard#index"
+    get "dashboard/index"
+  end
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
@@ -56,3 +64,4 @@ Housekeeping4::Application.routes.draw do
   # Note: This route will make all actions in every controller accessible via GET requests.
   # match ':controller(/:action(/:id(.:format)))'
 end
+

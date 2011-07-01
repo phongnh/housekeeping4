@@ -3,8 +3,32 @@
   %head
     %title Housekeeping
     = stylesheet_link_tag :defaults, :media => :all
+    = stylesheet_link_tag 'application_layout'
     = javascript_include_tag :defaults
     = csrf_meta_tag
   %body
-    = yield
-
+    #header-section
+      #header.container_12
+        #logo
+        #navigation
+          %ul#menu.clearfix
+            %li.selected
+              %span Financial Management
+            %li
+              = link_to "Statistics"
+            %li
+              = link_to "Report"
+            %li
+              = link_to "Settings"
+            %li
+              = link_to "My Account"
+    #bar
+      &nbsp;
+    #container
+      .container_12
+        #banner
+        #main
+          = yield
+    #footer-section
+      #footer
+        = render "shared/footer"
