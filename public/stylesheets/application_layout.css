@@ -5,14 +5,12 @@
 #header {
 }
 
-#header #navigation {
-  line-height: 30px;
-  height: 30px;
-  display: block;
-}
-
 #header #logo {
   height: 60px;
+}
+
+#header #navigation {
+  display: block;
 }
 
 ul#menu {
@@ -21,10 +19,13 @@ ul#menu {
   display: block;
   position: relative;
   top: 1px;
+  font-size: 14px;
+  line-height: 30px;
+  height: 30px;
+  float: right;
 }
 
 ul#menu li {
-  font-size: 16px;
   text-align: center;
   list-style-type: none;
   float: left;
@@ -41,7 +42,7 @@ ul#menu li span {
   text-decoration: none;
   color: #551A8B;
   display: block;
-  padding: 0 20px;
+  padding: 0 10px;
   border-radius: 5px 5px 0 0;
 }
 
@@ -61,10 +62,10 @@ ul#menu li.selected span {
   position: relative;
   background-color: #702297;
   border-bottom: 1px solid #FFF;
+/*  box-shadow: 0 0 10px #888;*/
 }
 
 #banner {
-  background-color: blue;
 }
 
 #container {
@@ -72,12 +73,55 @@ ul#menu li.selected span {
 }
 
 #main {
-  border-radius: 10px;
-  border: 1px solid #CCC;
-  box-shadow: 0 1px 4px #888;
-  height: 480px;
+/*  border: 1px solid #CCC;*/
+/*  border-radius: 10px;*/
+/*  box-shadow: 0 1px 4px #888;*/
+/*  height: 480px;*/
   margin: 32px auto 20px auto;
-  background-color: #FEFEFE;
+/*  background-color: #FEFEFE;*/
+}
+
+#title h1 {
+  background: url(../images/new_bar.png) repeat-x scroll left bottom transparent;
+  padding-bottom: 5px;
+}
+
+#left-column {
+/*  background-color: blue;*/
+/*  border: 1px solid #888;*/
+/*  width: 298px;*/
+/*  margin-left: 0;*/
+}
+
+#right-column {
+/*  background-color: red;*/
+/*  border: 1px solid #888;*/
+/*  width: 478px;*/
+/*  margin-right: 0;*/
+/*  margin-left: 30px;*/
+}
+
+div.box {
+  border: 1px solid #888;
+  border-radius: 10px;
+}
+
+div.box h2 {
+/*  border: 1px solid #888;*/
+  border-radius: 10px 10px 0 0;
+  text-align: center;
+  color: #FFF;
+/*  background-color: #702297;*/
+  background-color: #B0B0B0;
+  margin: 0;
+}
+
+div.box div {
+  padding: 10px;
+/*  background-color: #CCCCCC;*/
+  background-color: #EBEBEB;
+  
+  border-radius: 0 0 10px 10px;
 }
 
 #footer-section {
@@ -89,24 +133,24 @@ ul#menu li.selected span {
   padding: 30px 0 10px;
 }
 
-.clearfix:after {
-  clear: both;
-  content: ".";
-  display: block;
-  height: 0;
-  line-height: 0;
-  visibility: hidden;
-}
+/*.clearfix:after {*/
+/*  clear: both;*/
+/*  content: ".";*/
+/*  display: block;*/
+/*  height: 0;*/
+/*  line-height: 0;*/
+/*  visibility: hidden;*/
+/*}*/
 
-.clearfix {
-  display: inline-block;
-}
+/*.clearfix {*/
+/*  display: inline-block;*/
+/*}*/
 
-html[xmlns] .clearfix {
-  display: block;
-}
+/*html[xmlns] .clearfix {*/
+/*  display: block;*/
+/*}*/
 
-* html .clearfix {
-  height: 1%;
-}
+/** html .clearfix {*/
+/*  height: 1%;*/
+/*}*/
 

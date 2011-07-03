@@ -1,1 +1,20 @@
-DASHBOARD
+#title
+  %h1 Overview
+.container_24
+  #left-column.grid_7
+    #account-summary
+      %h6 Account Summary
+      %table{ :width => "100%" }
+        - 12.times do |i|
+          %tr
+            %td= (i+1).mon
+            %td
+              %div= number_with_delimiter(@overviews[i][:incoming])
+              %div= number_with_delimiter(@overviews[i][:outgoing])
+            %td
+              = number_with_delimiter(@overviews[i][:incoming] - @overviews[i][:outgoing])
+  #right-column.grid_17
+    #details.box
+      %h2 Add details
+      %div
+        dasfdasf dsaf asdfadsf asfasdf adsf
