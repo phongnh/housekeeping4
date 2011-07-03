@@ -1,3 +1,5 @@
+# encoding: utf-8
+
 class Fixnum
   
   def mon(locale=I18n.locale)
