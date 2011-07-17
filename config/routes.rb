@@ -1,5 +1,7 @@
 Housekeeping4::Application.routes.draw do
 
+  resources :categories
+
   root :to => "app/dashboard#index" 
 
   namespace :app do
