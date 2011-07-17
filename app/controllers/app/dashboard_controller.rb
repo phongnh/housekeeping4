@@ -1,10 +1,6 @@
 class App::DashboardController < ApplicationController
   def index
     @overviews = {
-      0 => {
-        :incoming => 101200,
-        :outgoing => 110220
-      },
       1 => {
         :incoming => 1001346,
         :outgoing => 5623232
@@ -48,8 +44,13 @@ class App::DashboardController < ApplicationController
       11 => {
         :incoming => 10012000,
         :outgoing => 111111
+      },
+      12 => {
+        :incoming => 101200,
+        :outgoing => 110220
       }
     }
   end
-  
+
 end
+

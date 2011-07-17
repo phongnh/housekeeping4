@@ -81,6 +81,135 @@ ul#menu li.selected span {
 /*  background-color: #FEFEFE;*/
 }
 
+.left-column {
+    float: left;
+}
+
+.right-column {
+    float: left;
+}
+
+.wrapper {
+    display: block;
+}
+
+.margin-bottom-10 {
+    margin-bottom: 10px;
+}
+
+.margin-bottom-20 {
+    margin-bottom: 20px;
+}
+
+.margin-left-20 {
+    margin-left: 20px;
+}
+
+.width-240 {
+    width: 240px;
+}
+
+.width-300 {
+    width: 300px;
+}
+
+.width-640 {
+    width: 640px;
+}
+
+.width-700 {
+    width: 700px;
+}
+
+table.account-summary {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 1px;
+/*  border: 1px solid #CCCCCC;*/
+/*  margin-bottom: 5px;*/
+    margin: 0;
+/*  box-shadow: 0 0 5px #888;*/
+}
+
+table.account-summary td {
+  vertical-align: middle;
+  padding: 2px;
+  margin: 2px;
+}
+
+table.account-summary td.month {
+  width: 80px;
+  text-align: center;
+  font-weight: bold;
+  font-size: 16px;
+  color: #FFF;
+  color: #000;
+}
+
+table.account-summary td.information {
+  width: 200px;
+}
+
+table.account-summary td.balance {
+  width: 150px;
+}
+
+table.account-summary tr {
+  color: #000;
+}
+
+table.account-summary tr.even {
+/*  background-color: #FAFAFA;*/
+}
+
+table.account-summary tr {
+/*  background-color: #E8E8E8;*/
+}
+
+
+table.account-summary tr.total {
+/*  background-color: #B0B0B0;*/
+  color: #000;
+}
+
+table.account-summary tr.month-1,
+table.account-summary tr.month-2,
+table.account-summary tr.month-3 {
+/*  background-color: #2AAA11;*/
+}
+
+table.account-summary tr.month-4,
+table.account-summary tr.month-5,
+table.account-summary tr.month-6 {
+/*  background-color: #EF0000;*/
+}
+
+table.account-summary tr.month-7,
+table.account-summary tr.month-8,
+table.account-summary tr.month-9 {
+/*  background-color: #FFC000;*/
+}
+
+table.account-summary tr.month-10,
+table.account-summary tr.month-11,
+table.account-summary tr.month-12 {
+/*  background-color: #0058C3;*/
+}
+
+div.total,
+div.incoming,
+div.outgoing {
+  text-align: right;
+}
+
+div.incoming {
+  color: blue;
+}
+
+div.outgoing {
+  color: red;
+}
+
 #title h1 {
   background: url(../images/new_bar.png) repeat-x scroll left bottom transparent;
   padding-bottom: 5px;
@@ -104,24 +233,41 @@ ul#menu li.selected span {
 div.box {
   border: 1px solid #888;
   border-radius: 10px;
+  box-shadow: 0 0 5px #888;
 }
 
-div.box h2 {
+/*div.box h2 {*/
 /*  border: 1px solid #888;*/
-  border-radius: 10px 10px 0 0;
-  text-align: center;
-  color: #FFF;
+/*  border-radius: 10px 10px 0 0;*/
+/*  text-align: center;*/
+/*  color: #FFF;*/
 /*  background-color: #702297;*/
-  background-color: #B0B0B0;
-  margin: 0;
-}
+/*  background-color: #B0B0B0;*/
+/*  margin: 0;*/
+/*}*/
 
-div.box div {
-  padding: 10px;
+div.box div.title {
+/*    border-radius: 0 10px 0 10px;*/
+/*  padding: 10px;*/
 /*  background-color: #CCCCCC;*/
   background-color: #EBEBEB;
-  
-  border-radius: 0 0 10px 10px;
+  border-radius: 10px 10px 0 0;
+  border-bottom: 1px solid #CCCCCC;
+}
+
+div.box div.title h4 {
+    margin: 0;
+    padding-left: 15px;
+}
+
+div.box div.content {
+    margin-bottom: 5px;
+    padding: 0 5px;
+/*    padding-left: 5px;*/
+}
+
+div.box div.content ul {
+    margin: 0;
 }
 
 #footer-section {
