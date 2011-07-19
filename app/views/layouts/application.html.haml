@@ -11,19 +11,7 @@
       #header.container_12
         #logo
         #navigation.clearfix
-          %ul#menu.clearfix
-            %li.selected
-              %span Dashboard
-            %li.selected
-              = link_to "Financial Management"
-            %li
-              = link_to "Statistics"
-            %li
-              = link_to "Reports"
-            %li
-              = link_to "Settings"
-            %li
-              = link_to "My Account"
+          = render "/shared/menu"
     #bar
       &nbsp;
     #container

@@ -1,12 +1,10 @@
 Housekeeping4::Application.routes.draw do
-
-  resources :categories
-
-  root :to => "app/dashboard#index" 
+  root :to => "app/dashboard#index"
 
   namespace :app do
     root :to => "dashboard#index"
-    get "dashboard/index"
+    match "dashboard", :to => "dashboard#index"
+    resources :categories
   end
 
   # The priority is based upon order of creation:

@@ -1,0 +1,8 @@
+%ul#menu.clearfix
+  - MENU_ITEMS.each do |i|
+    - if APP_MENU[i] == params[:controller]
+      %li(class="selected")
+        %span= I18n.t("app.menu.#{i}")
+    - else
+      %li= link_to I18n.t("app.menu.#{i}"), "/#{APP_MENU[i]}"
+
