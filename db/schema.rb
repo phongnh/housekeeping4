@@ -14,12 +14,13 @@ ActiveRecord::Schema.define(:version => 20110717163405) do
 
   create_table "categories", :force => true do |t|
     t.string   "name"
-    t.integer  "category_type", :default => 0
+    t.string   "color",      :default => "red"
+    t.integer  "parent_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  add_index "categories", ["category_type"], :name => "index_categories_on_category_type"
   add_index "categories", ["name"], :name => "index_categories_on_name", :unique => true
+  add_index "categories", ["parent_id"], :name => "index_categories_on_parent_id"
 
 end
