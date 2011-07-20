@@ -29,6 +29,10 @@ gem 'kaminari'
 
 gem 'sqlite3'
 
+gem 'pg'
+
+gem 'faker'
+
 group :development do
   gem "haml-rails"
   gem 'jquery-rails'
