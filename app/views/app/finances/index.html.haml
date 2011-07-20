@@ -31,5 +31,5 @@
       %td= t.description
       %td= t.kind_name
       %td.center= link_to I18n.t("action.edit"), edit_app_finance_path(t)
-= paginate @transactions, :theme => "default"
+= paginate @transactions
 
