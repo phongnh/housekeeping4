@@ -11,4 +11,9 @@ en:
       categories: "Categories"
       accounts: "Accounts"
       settings: "Settings"
+  action:
+    edit: "Edit"
+  label:
+    incoming: "Incoming"
+    outgoing: "Outgoing"
 

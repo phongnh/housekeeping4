@@ -1,0 +1,66 @@
+table.common {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 1px;
+    border: 1px solid #CCC;
+}
+
+table.common th,
+table.common td {
+    padding: 5px;
+    margin: 5px;
+}
+
+table.common th {
+    vertical-align: middle;
+    background-color: #DDD;
+    border: 1px solid #CCC;
+    text-align: center;
+    font-weight: bold;
+}
+
+table.common td {
+    background-color: #F0F0F0;
+}
+
+table.common td.center {
+    text-align: center;
+}
+
+table.common td.number,
+table.common td.right {
+    text-align: right;
+}
+
+table.common col.checkbox {
+    width: 32px;
+}
+
+table.common col.auto-width {
+    width: auto;
+}
+
+table.common col.width-60 {
+    width: 60px;
+}
+
+table.common col.width-80 {
+    width: 80px;
+}
+
+table.common col.width-100 {
+    width: 100px;
+}
+
+table.common col.width-120 {
+    width: 120px;
+}
+
+table.common col.width-150 {
+    width: 150px;
+}
+
+table.common col.width-200 {
+    width: 200px;
+}
+

@@ -16,4 +16,13 @@
 #
 
 class Transaction < ActiveRecord::Base
+  belongs_to :category
+  belongs_to :account
+
+  default_scope order([:date, :created_at])
+
+  def kind_name
+    I18n.t("label.#{TYPES[self.kind]}")
+  end
 end
+

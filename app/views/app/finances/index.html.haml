@@ -1,2 +1,35 @@
-FINANCE INDEX
+- content_for :css do
+  = stylesheet_link_tag "common"
+
+%table.common.transactions
+  %colgroup
+    %col.checkbox
+    %col.width-100
+    %col.width-100
+    %col.width-150
+    %col.width-120
+    %col.auto-width
+    %col.width-60
+    %col.width-60
+  %tr
+    %th
+      %input(type="checkbox" class="parent")
+    %th= human_field_name(:account)
+    %th= human_field_name(:date)
+    %th= human_field_name(:category)
+    %th= human_field_name(:amount)
+    %th= human_field_name(:description)
+    %th= human_field_name(:kind)
+    %th
+  - @transactions.each do |t|
+    %tr
+      %td.center= check_box_tag "id[]", t.id, false, :class => "child"
+      %td= t.account.name
+      %td.center= t.date
+      %td= t.category.name
+      %td.right= number_to_currency(t.amount, :locale => :vi, :precision => 0, :unit => "VND", :format => "%n %u")
+      %td= t.description
+      %td= t.kind_name
+      %td.center= link_to I18n.t("action.edit"), edit_app_finance_path(t)
+= paginate @transactions, :theme => "default"
 
