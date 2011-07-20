@@ -56,5 +56,8 @@ Housekeeping4::Application.configure do
 
   # CSS files for :960gs
   config.action_view.stylesheet_expansions[:defaults] = %w(960gs/min/reset 960gs/min/text 960gs/min/960 960gs/min/960_24_col smoothness/jquery-ui)
+
+  # Action Mailer
+  config.action_mailer.default_url_options = { :host => 'housekeeping4.heroku.com' }
 end
 
