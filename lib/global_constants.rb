@@ -1,6 +1,7 @@
 module GlobalConstants
   INCOMING = 0
   OUTGOING = 1
+  TYPES = [INCOMING, OUTGOING]
 
   MENU_ITEMS = [
     :dashboard,

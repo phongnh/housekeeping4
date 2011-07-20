@@ -4,7 +4,7 @@
 #
 #  id         :integer         not null, primary key
 #  name       :string(255)
-#  color      :string(255)     default("red")
+#  color      :string(255)     default("white")
 #  parent_id  :integer
 #  created_at :datetime
 #  updated_at :datetime
