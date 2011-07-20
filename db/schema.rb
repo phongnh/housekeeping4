@@ -24,7 +24,8 @@ ActiveRecord::Schema.define(:version => 20110720065350) do
     t.datetime "updated_at"
   end
 
-  add_index "accounts", ["name"], :name => "index_accounts_on_name", :unique => true
+  add_index "accounts", ["name"], :name => "index_accounts_on_name"
+  add_index "accounts", ["owner_id", "name"], :name => "index_accounts_on_owner_id_and_name", :unique => true
   add_index "accounts", ["owner_id"], :name => "index_accounts_on_owner_id"
 
   create_table "categories", :force => true do |t|

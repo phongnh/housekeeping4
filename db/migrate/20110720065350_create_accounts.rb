@@ -13,7 +13,8 @@ class CreateAccounts < ActiveRecord::Migration
     end
 
     add_index :accounts, :owner_id
-    add_index :accounts, :name, :unique => true
+    add_index :accounts, :name
+    add_index :accounts, [:owner_id, :name], :unique => true
   end
 
   def self.down
