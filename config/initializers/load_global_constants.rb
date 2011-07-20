@@ -1,4 +1,4 @@
-require "lib/global_constants"
+require "./lib/global_constants"
 
 include GlobalConstants
 
