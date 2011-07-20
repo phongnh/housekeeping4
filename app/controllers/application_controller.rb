@@ -16,7 +16,7 @@ class ApplicationController < ActionController::Base
     puts "=================================================================", ""
   end
 
-  private
+  protected
   def logs_params
     logs("params", params)
   end
