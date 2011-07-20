@@ -11,7 +11,7 @@
 #
 
 class Category < ActiveRecord::Base
-
+  default_scope order(:name)
   scope :root, where(:parent_id => nil)
 
   def self.seed
