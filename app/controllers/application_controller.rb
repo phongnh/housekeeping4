@@ -6,18 +6,18 @@ class ApplicationController < ActionController::Base
 
   protect_from_forgery
 
-  before_filter :inspect_params
+  #before_filter :inspect_params
 
   helper_method :log
 
-  def log(name, var)
-    puts "", "================================================================="
-    puts "name = #{var.inspect}"
-    puts "=================================================================", ""
-  end
-
   def inspect_params
     log("params", params)
+  end
+
+  def log(name, var)
+    puts "", "================================================================="
+    puts "#{name} = #{var.inspect}"
+    puts "=================================================================", ""
   end
 end
 
