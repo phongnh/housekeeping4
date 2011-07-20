@@ -10,7 +10,22 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110720063436) do
+ActiveRecord::Schema.define(:version => 20110720065350) do
+
+  create_table "accounts", :force => true do |t|
+    t.integer  "owner_id"
+    t.string   "name"
+    t.boolean  "default",     :default => false
+    t.string   "description"
+    t.integer  "earnings",    :default => 0
+    t.integer  "expenses",    :default => 0
+    t.integer  "balance",     :default => 0
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "accounts", ["name"], :name => "index_accounts_on_name", :unique => true
+  add_index "accounts", ["owner_id"], :name => "index_accounts_on_owner_id"
 
   create_table "categories", :force => true do |t|
     t.string   "name"
