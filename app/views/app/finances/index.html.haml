@@ -1,35 +1,79 @@
 - content_for :css do
   = stylesheet_link_tag "common"
+- content_for :js do
+  = javascript_include_tag "finances"
 
-%table.common.transactions
-  %colgroup
-    %col.checkbox
-    %col.width-100
-    %col.width-100
-    %col.width-150
-    %col.width-120
-    %col.auto-width
-    %col.width-60
-    %col.width-60
-  %tr
-    %th
-      %input(type="checkbox" class="parent")
-    %th= human_field_name(:account)
-    %th= human_field_name(:date)
-    %th= human_field_name(:category)
-    %th= human_field_name(:amount)
-    %th= human_field_name(:description)
-    %th= human_field_name(:kind)
-    %th
-  - @transactions.each do |t|
-    %tr
-      %td.center= check_box_tag "id[]", t.id, false, :class => "child"
-      %td= t.account.name
-      %td.center= t.date
-      %td= t.category.name
-      %td.right= number_to_currency(t.amount, :locale => :vi, :precision => 0, :unit => "VND", :format => "%n %u")
-      %td= t.description
-      %td= t.kind_name
-      %td.center= link_to I18n.t("action.edit"), edit_app_finance_path(t)
-= paginate @transactions
+
+.left-column.width-240
+  .wrapper.margin-bottom-20
+    .box
+      .title
+        %h4 Account Summary
+      .content
+        %table.account-summary
+          %tr
+            %td Today
+            %td
+              %div Earning: 20000
+              %div Spending: 14000
+          %tr
+            %td This month
+            %td
+              %div Earning: 12000
+              %div Spending: 8000
+          %tr
+            %td This year
+            %td
+              %div Earning: 2400
+              %div Spending: 10000
+.right-column.margin-left-20.width-700
+  .wrapper.margin-bottom-20
+    .box
+      .title
+        %h4 Add new transaction
+      .content
+        = simple_form_for [:app, @transaction] do |f|
+          = f.association :account, :prompt => false
+          = f.input :date, :as => :string
+          = f.input :amount, :as => :string
+          = f.input :description, :as => :string
+          = f.input :kind do
+            = f.collection_radio :kind, [[INCOMING, "Yes"], [OUTGOING, "No"]], :first, :last
+          = f.button :submit
+  .wrapper
+    .box
+      .title
+        %h4= I18n.t("label.transactions")
+      .content
+        %table.common.transactions
+          %colgroup
+            %col.checkbox
+            %col.width-100
+            %col.width-80
+            %col.width-120
+            %col.width-120
+            %col.auto-width
+            %col.width-60
+            %col.width-20
+          %tr
+            %th
+              %input(type="checkbox" class="parent")
+            %th= human_field_name(:account)
+            %th= human_field_name(:date)
+            %th= human_field_name(:category)
+            %th= human_field_name(:amount)
+            %th= human_field_name(:description)
+            %th= human_field_name(:kind)
+            %th
+          - @transactions.each do |t|
+            %tr
+              %td.center= check_box_tag "id[]", t.id, false, :class => "child"
+              %td= t.account.name
+              %td.center= t.date
+              %td= t.category.name
+              %td.right= number_to_currency(t.amount, :locale => :vi, :precision => 0, :unit => "VND", :format => "%n %u")
+              %td= t.description
+              %td= t.kind_name
+              %td.center= link_to I18n.t("action.edit"), edit_app_transaction_path(t)
+        = paginate @transactions
 

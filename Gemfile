@@ -33,6 +33,8 @@ gem 'pg'
 
 gem 'faker'
 
+gem 'formtastic'
+
 group :development do
   gem "haml-rails"
   gem 'jquery-rails'

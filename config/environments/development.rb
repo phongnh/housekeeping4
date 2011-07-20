@@ -29,7 +29,7 @@ Housekeeping4::Application.configure do
   config.action_view.javascript_expansions[:jquery] = %w(jquery jquery-ui rails)
 
   # CSS files for :960gs
-  config.action_view.stylesheet_expansions[:defaults] = %w(960gs/reset 960gs/text 960gs/960 960gs/960_24_col)
+  config.action_view.stylesheet_expansions[:defaults] = %w(960gs/reset 960gs/text 960gs/960 960gs/960_24_col smoothness/jquery-ui)
 
   # Action Mailer
   config.action_mailer.default_url_options = { :host => 'housekeeping4.local:8000' }

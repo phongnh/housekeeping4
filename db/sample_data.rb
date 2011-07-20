@@ -4,7 +4,8 @@ def create_sample_transactions
   u = User.first
   a = u.accounts.default.first
   t = TYPES.keys
-  200.times do
+  200.times do |i|
+    puts "   Adding line \##{i+1}..."
     Transaction.create :date        => Date.today,
                        :account_id  => a.id,
                        :owner_id    => u.id,

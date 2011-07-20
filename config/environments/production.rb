@@ -55,6 +55,6 @@ Housekeeping4::Application.configure do
   config.action_view.javascript_expansions[:jquery] = %w(jquery.min jquery-ui.min rails)
 
   # CSS files for :960gs
-  config.action_view.stylesheet_expansions[:defaults] = %w(960gs/min/reset 960gs/min/text 960gs/min/960 960gs/min/960_24_col)
+  config.action_view.stylesheet_expansions[:defaults] = %w(960gs/min/reset 960gs/min/text 960gs/min/960 960gs/min/960_24_col smoothness/jquery-ui)
 end
 

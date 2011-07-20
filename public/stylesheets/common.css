@@ -3,6 +3,7 @@ table.common {
     border-collapse: separate;
     border-spacing: 1px;
     border: 1px solid #CCC;
+    margin: 0;
 }
 
 table.common th,
@@ -40,6 +41,14 @@ table.common col.auto-width {
     width: auto;
 }
 
+table.common col.width-20 {
+    width: 20px;
+}
+
+table.common col.width-40 {
+    width: 40px;
+}
+
 table.common col.width-60 {
     width: 60px;
 }
@@ -54,6 +63,10 @@ table.common col.width-100 {
 
 table.common col.width-120 {
     width: 120px;
+}
+
+table.common col.width-140 {
+    width: 140px;
 }
 
 table.common col.width-150 {

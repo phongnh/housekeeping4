@@ -16,4 +16,5 @@ en:
   label:
     incoming: "Incoming"
     outgoing: "Outgoing"
+    transactions: "Transaction Management"
 

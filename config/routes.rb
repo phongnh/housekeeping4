@@ -6,7 +6,7 @@ Housekeeping4::Application.routes.draw do
   namespace :app do
     root :to => "dashboard#index"
     match "dashboard", :to => "dashboard#index"
-    resources :finances
+    resources :finances, :as => "transactions"
     resources :categories
   end
 
