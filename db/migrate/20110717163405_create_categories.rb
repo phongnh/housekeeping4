@@ -2,7 +2,7 @@ class CreateCategories < ActiveRecord::Migration
   def self.up
     create_table :categories do |t|
       t.string :name
-      t.string :color, :default => "red"
+      t.string :color, :default => "white"
       t.integer :parent_id
 
       t.timestamps
