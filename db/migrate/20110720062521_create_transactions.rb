@@ -2,6 +2,9 @@ class CreateTransactions < ActiveRecord::Migration
   def self.up
     create_table :transactions do |t|
       t.date :date
+      t.integer :year,  :limit => 2
+      t.integer :month, :limit => 1
+      t.integer :day,   :limit => 1
       t.integer :account_id
       t.integer :category_id
       t.integer :owner_id
@@ -14,6 +17,9 @@ class CreateTransactions < ActiveRecord::Migration
     end
 
     add_index :transactions, :date
+    add_index :transactions, :year
+    add_index :transactions, :month
+    add_index :transactions, :day
     add_index :transactions, :account_id
     add_index :transactions, :category_id
     add_index :transactions, :owner_id

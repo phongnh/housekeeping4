@@ -12,20 +12,55 @@
       .content
         %table.account-summary
           %tr
+            %td Total
+            %td
+              %div
+                Earning:
+                = to_currency(Account.first.earnings)
+              %div
+                Spending:
+                = to_currency(Account.first.expenses)
+              %div
+                Balance:
+                = to_currency(Account.first.balance)
+          %tr
             %td Today
             %td
-              %div Earning: 20000
-              %div Spending: 14000
+              %div
+                Earning:
+                = to_currency(Transaction.today.incoming)
+              %div
+                Spending:
+                = to_currency(Transaction.today.outgoing)
+              %div
+                Balance:
+                = to_currency(Transaction.today.balance)
           %tr
             %td This month
             %td
-              %div Earning: 12000
-              %div Spending: 8000
+              %div
+                Earning:
+                = to_currency(Transaction.this_month.incoming)
+              %div
+                Spending:
+                = to_currency(Transaction.this_month.outgoing)
+              %div
+                Balance:
+                = to_currency(Transaction.this_month.balance)
+          %tr
           %tr
             %td This year
             %td
-              %div Earning: 2400
-              %div Spending: 10000
+              %div
+                Earning:
+                = to_currency(Transaction.this_year.incoming)
+              %div
+                Spending:
+                = to_currency(Transaction.this_year.outgoing)
+              %div
+                Balance:
+                = to_currency(Transaction.this_year.balance)
+          %tr
 .right-column.margin-left-20.width-700
   .wrapper.margin-bottom-20
     .box
@@ -35,10 +70,11 @@
         = simple_form_for [:app, @transaction] do |f|
           = f.association :account, :prompt => false
           = f.input :date, :as => :string
-          = f.input :amount, :as => :string
-          = f.input :description, :as => :string
+          = f.input :category_id, :collection => Category.all, :prompt => false
+          = f.input :amount, :as => :string, :input_html => { :maxlength => 15 }
+          = f.input :description, :as => :string, :input_html => { :maxlength => 255 }
           = f.input :kind do
-            = f.collection_radio :kind, [[INCOMING, "Yes"], [OUTGOING, "No"]], :first, :last
+            = f.collection_radio :kind, [[INCOMING, I18n.t("label.incoming")], [OUTGOING, I18n.t("label.outgoing")]], :first, :last
           = f.button :submit
   .wrapper
     .box
@@ -71,7 +107,7 @@
               %td= t.account.name
               %td.center= t.date
               %td= t.category.name
-              %td.right= number_to_currency(t.amount, :locale => :vi, :precision => 0, :unit => "VND", :format => "%n %u")
+              %td.right= to_currency(t.amount)
               %td= t.description
               %td= t.kind_name
               %td.center= link_to I18n.t("action.edit"), edit_app_transaction_path(t)

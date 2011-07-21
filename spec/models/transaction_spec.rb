@@ -4,6 +4,9 @@
 #
 #  id          :integer         not null, primary key
 #  date        :date
+#  year        :integer(2)
+#  month       :integer(1)
+#  day         :integer(1)
 #  account_id  :integer
 #  category_id :integer
 #  owner_id    :integer

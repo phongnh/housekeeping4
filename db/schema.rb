@@ -41,12 +41,15 @@ ActiveRecord::Schema.define(:version => 20110720065350) do
 
   create_table "transactions", :force => true do |t|
     t.date     "date"
+    t.integer  "year",        :limit => 2
+    t.integer  "month",       :limit => 1
+    t.integer  "day",         :limit => 1
     t.integer  "account_id"
     t.integer  "category_id"
     t.integer  "owner_id"
     t.integer  "amount"
     t.string   "description"
-    t.integer  "kind",        :default => 0
+    t.integer  "kind",                     :default => 0
     t.datetime "deleted_at"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -55,8 +58,11 @@ ActiveRecord::Schema.define(:version => 20110720065350) do
   add_index "transactions", ["account_id"], :name => "index_transactions_on_account_id"
   add_index "transactions", ["category_id"], :name => "index_transactions_on_category_id"
   add_index "transactions", ["date"], :name => "index_transactions_on_date"
+  add_index "transactions", ["day"], :name => "index_transactions_on_day"
   add_index "transactions", ["kind"], :name => "index_transactions_on_kind"
+  add_index "transactions", ["month"], :name => "index_transactions_on_month"
   add_index "transactions", ["owner_id"], :name => "index_transactions_on_owner_id"
+  add_index "transactions", ["year"], :name => "index_transactions_on_year"
 
   create_table "users", :force => true do |t|
     t.string   "email",                                 :default => "", :null => false
