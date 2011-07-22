@@ -9,7 +9,6 @@
 #  description :string(255)
 #  earnings    :integer         default(0)
 #  expenses    :integer         default(0)
-#  balance     :integer         default(0)
 #  created_at  :datetime
 #  updated_at  :datetime
 #

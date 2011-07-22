@@ -19,7 +19,6 @@ ActiveRecord::Schema.define(:version => 20110720065350) do
     t.string   "description"
     t.integer  "earnings",    :default => 0
     t.integer  "expenses",    :default => 0
-    t.integer  "balance",     :default => 0
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -62,6 +61,8 @@ ActiveRecord::Schema.define(:version => 20110720065350) do
   add_index "transactions", ["kind"], :name => "index_transactions_on_kind"
   add_index "transactions", ["month"], :name => "index_transactions_on_month"
   add_index "transactions", ["owner_id"], :name => "index_transactions_on_owner_id"
+  add_index "transactions", ["year", "month", "day"], :name => "index_transactions_on_year_and_month_and_day"
+  add_index "transactions", ["year", "month"], :name => "index_transactions_on_year_and_month"
   add_index "transactions", ["year"], :name => "index_transactions_on_year"
 
   create_table "users", :force => true do |t|
