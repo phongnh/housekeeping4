@@ -1,25 +1,6 @@
 .left-column.width-240
   .wrapper.margin-bottom-20
-    .box
-      .title
-        %h4 Account Summary
-      .content
-        %table.account-summary
-          %tr
-            %td Today
-            %td
-              %div Earning: 20000
-              %div Spending: 14000
-          %tr
-            %td This month
-            %td
-              %div Earning: 12000
-              %div Spending: 8000
-          %tr
-            %td This year
-            %td
-              %div Earning: 2400
-              %div Spending: 10000
+    = render "/shared/account_summary"
   //.wrapper.margin-bottom-20
   //  .box
   //    .title
