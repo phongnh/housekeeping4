@@ -7,7 +7,7 @@ class CreateAccounts < ActiveRecord::Migration
       t.string :description
       t.integer :earnings, :default => 0
       t.integer :expenses, :default => 0
-      t.integer :balance, :default => 0
+      #t.integer :balance, :default => 0
 
       t.timestamps
     end
