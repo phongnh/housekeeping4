@@ -35,6 +35,27 @@ class Transaction < ActiveRecord::Base
 
   scope :recent, includes(:category, :account).order("date DESC, created_at DESC")
 
+  def self.summary(account_id)
+    t = Date.today
+    total      = Transaction.where(:account_id => account_id)
+    this_year  = total.where(:year => t.year)
+    this_month = this_year.where(:month => t.month)
+    today      = this_month.where(:day => t.day)
+    result = {}
+    { :total => total, :this_year => this_year,
+      :this_month => this_month, :today => today }.each do |key, value|
+      new_value = value.all
+      incoming = new_value.find_all(&:incoming?).sum(&:amount)
+      outgoing = new_value.find_all(&:outgoing?).sum(&:amount)
+      result[key] = {
+        :incoming => incoming,
+        :outgoing => outgoing,
+        :balance  => incoming - outgoing
+      }
+    end
+    result
+  end
+
   def self.today
     transactions = Transaction.where(:date => Date.today).all
     Summary.new transactions
