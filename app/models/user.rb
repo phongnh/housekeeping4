@@ -35,5 +35,9 @@ class User < ActiveRecord::Base
                   :password, :password_confirmation, :remember_me
 
   has_many :accounts, :foreign_key => :owner_id
+
+  def name
+    [first_name, last_name].compact.join(" ")
+  end
 end
 
