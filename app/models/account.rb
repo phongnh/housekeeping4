@@ -15,7 +15,9 @@
 #
 
 class Account < ActiveRecord::Base
+  has_many :transactions
   belongs_to :owner, :class_name => "User", :foreign_key => :owner_id
+
 
   before_save :update_balance
 
