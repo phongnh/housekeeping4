@@ -20,6 +20,8 @@ class CreateTransactions < ActiveRecord::Migration
     add_index :transactions, :year
     add_index :transactions, :month
     add_index :transactions, :day
+    add_index :transactions, [:year, :month]
+    add_index :transactions, [:year, :month, :day]
     add_index :transactions, :account_id
     add_index :transactions, :category_id
     add_index :transactions, :owner_id
