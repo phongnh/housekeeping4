@@ -1,4 +1,8 @@
-- @categories.each do |c|
-  %div
-    %span(style="background-color: #{c.color};")= c.name
+%table.common
+  %tr
+    %th= human_field_name(:name)
+  - @categories.each do |c|
+    %tr
+      %td= c.name
+= paginate @categories
 
