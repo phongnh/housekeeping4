@@ -13,22 +13,24 @@
 ActiveRecord::Schema.define(:version => 20110814152642) do
 
   create_table "account_types", :force => true do |t|
-    t.string "names"
+    t.string "name"
   end
 
-  add_index "account_types", ["names"], :name => "index_account_types_on_names", :unique => true
+  add_index "account_types", ["name"], :name => "index_account_types_on_name", :unique => true
 
   create_table "accounts", :force => true do |t|
     t.integer  "owner_id"
+    t.integer  "account_type_id"
     t.string   "name"
-    t.boolean  "default",     :default => false
+    t.boolean  "default",         :default => false
     t.string   "description"
-    t.integer  "income",      :default => 0
-    t.integer  "expenses",    :default => 0
+    t.integer  "income",          :default => 0
+    t.integer  "expense",         :default => 0
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
+  add_index "accounts", ["account_type_id"], :name => "index_accounts_on_account_type_id"
   add_index "accounts", ["name"], :name => "index_accounts_on_name"
   add_index "accounts", ["owner_id", "name"], :name => "index_accounts_on_owner_id_and_name", :unique => true
   add_index "accounts", ["owner_id"], :name => "index_accounts_on_owner_id"
@@ -60,7 +62,7 @@ ActiveRecord::Schema.define(:version => 20110814152642) do
     t.integer  "owner_id"
     t.integer  "amount"
     t.string   "description"
-    t.integer  "kind",                     :default => 0
+    t.integer  "kind"
     t.datetime "deleted_at"
     t.datetime "created_at"
     t.datetime "updated_at"

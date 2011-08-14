@@ -12,7 +12,7 @@
 #  owner_id    :integer
 #  amount      :integer
 #  description :string(255)
-#  kind        :integer         default(0)
+#  kind        :integer
 #  deleted_at  :datetime
 #  created_at  :datetime
 #  updated_at  :datetime

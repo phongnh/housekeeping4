@@ -2,15 +2,16 @@
 #
 # Table name: accounts
 #
-#  id          :integer         not null, primary key
-#  owner_id    :integer
-#  name        :string(255)
-#  default     :boolean         default(FALSE)
-#  description :string(255)
-#  income      :integer         default(0)
-#  expenses    :integer         default(0)
-#  created_at  :datetime
-#  updated_at  :datetime
+#  id              :integer         not null, primary key
+#  owner_id        :integer
+#  account_type_id :integer
+#  name            :string(255)
+#  default         :boolean         default(FALSE)
+#  description     :string(255)
+#  income          :integer         default(0)
+#  expense         :integer         default(0)
+#  created_at      :datetime
+#  updated_at      :datetime
 #
 
 require 'spec_helper'
