@@ -7,18 +7,41 @@
 #  name        :string(255)
 #  default     :boolean         default(FALSE)
 #  description :string(255)
-#  earnings    :integer         default(0)
+#  income      :integer         default(0)
 #  expenses    :integer         default(0)
 #  created_at  :datetime
 #  updated_at  :datetime
 #
 
 class Account < ActiveRecord::Base
-  has_many :transactions
+  DEFAULT_SELECT = "transactions.*, SUM(amount) AS sum_amount"
+
   belongs_to :owner, :class_name => "User", :foreign_key => :owner_id
+  has_many :transactions
 
+  has_many :daily_transactions,
+           :class_name => "Transaction",
+           :foreign_key => :account_id,
+           :group => [:kind, :date],
+           :conditions => { :date => Date.today },
+           :select => DEFAULT_SELECT
 
-#  before_save :update_balance
+  has_many :monthly_transactions,
+           :class_name => "Transaction",
+           :foreign_key => :account_id,
+           :group => [:kind, :year, :month],
+           :conditions => {
+             :year => Date.today.year,
+             :month => Date.today.month
+           },
+           :select => DEFAULT_SELECT
+
+  has_many :yearly_transactions,
+           :class_name => "Transaction",
+           :foreign_key => :account_id,
+           :group => [:kind, :year],
+           :conditions => { :year => Date.today.year },
+           :select => DEFAULT_SELECT
 
   scope :default, where(:default => true)
 
@@ -27,8 +50,5 @@ class Account < ActiveRecord::Base
   end
 
   private
-#  def update_balance
-#    self.balance = self.earnings - self.expenses
-#  end
 end
 

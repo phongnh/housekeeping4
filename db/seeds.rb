@@ -6,12 +6,22 @@
 #   cities = City.create([{ :name => 'Chicago' }, { :name => 'Copenhagen' }])
 #   Mayor.create(:name => 'Daley', :city => cities.first)
 
-#u = User.create :email                 => "nhphong1406@gmail.com",
-#                 :first_name            => "Phong",
-#                 :last_name             => "Nguyen",
-#                 :password              => "123456",
-#                 :password_confirmation => "123456"
+puts "Begin creating seed data..."
 
-#Account.create :owner_id => u.id, :name => "Home", :default => true
-#Category.seed
+puts "-> Creating categories..."
+Category.seed
+puts "-> Finished."
 
+puts "-> Creating transaction types..."
+TransactionType.seed
+puts "-> Finished."
+
+puts "-> Creating account types..."
+AccountType.seed
+puts "-> Finished."
+
+puts "-> Creating administrator of system..."
+User.seed
+puts "-> Finished."
+
+puts "Finished creating seed data."

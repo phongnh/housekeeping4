@@ -10,7 +10,7 @@ class CreateTransactions < ActiveRecord::Migration
       t.integer :owner_id
       t.integer :amount
       t.string :description
-      t.integer :kind, :default => INCOMING
+      t.integer :kind
       t.datetime :deleted_at
 
       t.timestamps

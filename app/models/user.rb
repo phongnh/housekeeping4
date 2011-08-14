@@ -39,5 +39,14 @@ class User < ActiveRecord::Base
   def name
     [first_name, last_name].compact.join(" ")
   end
+
+  def self.seed
+    self.create :email                 => "nhphong1406@gmail.com",
+                :first_name            => "Phong",
+                :last_name             => "Nguyen",
+                :password              => "123456",
+                :password_confirmation => "123456"
+  end
+
 end
 

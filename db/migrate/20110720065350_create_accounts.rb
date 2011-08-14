@@ -5,7 +5,7 @@ class CreateAccounts < ActiveRecord::Migration
       t.string :name
       t.boolean :default, :default => false
       t.string :description
-      t.integer :earnings, :default => 0
+      t.integer :income, :default => 0
       t.integer :expenses, :default => 0
       #t.integer :balance, :default => 0
 

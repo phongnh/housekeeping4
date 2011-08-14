@@ -23,13 +23,14 @@ ul#menu {
   line-height: 30px;
   height: 30px;
   float: right;
+  list-style: none outside none;
 }
 
 ul#menu li {
   text-align: center;
-  list-style-type: none;
   float: left;
   color: #FAFAFA;
+  color: #551A8B;
   border-bottom: none;
   background-color: #BDA9DB;
   margin: 0 2px 0 0;
@@ -38,11 +39,14 @@ ul#menu li {
 }
 
 ul#menu li a,
+ul#menu li a:link,
+ul#menu li a:hover,
+ul#menu li a:active,
 ul#menu li span {
   text-decoration: none;
-  color: #551A8B;
-  display: block;
-  padding: 0 10px;
+  /* color: #551A8B; */
+  /*display: block;*/
+  /*padding: 0 10px;*/
   border-radius: 5px 5px 0 0;
 }
 
@@ -51,7 +55,7 @@ ul#menu li:hover a {
   text-shadow: 0 0 5px #FFF;
 }
 
-ul#menu li.selected span {
+ul#menu li.selected {
   background-color: #702297;
   text-shadow: 0 0 5px #FFF;
   color: #FFF;
