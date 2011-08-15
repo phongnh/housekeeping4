@@ -1,56 +1,56 @@
-.box
-  .title
-    %h4 Account Summary
-  .content
-    %table.account-summary
-      %tr
-        %td Total
-        %td
-          %div
-            Earning:
-            = to_currency(@summary[:total][:incoming])
-          %div
-            Spending:
-            = to_currency(@summary[:total][:outgoing])
-          %div
-            Balance:
-            = to_currency(@summary[:total][:balance])
-      %tr
-        %td Today
-        %td
-          %div
-            Earning:
-            = to_currency(@summary[:today][:incoming])
-          %div
-            Spending:
-            = to_currency(@summary[:today][:outgoing])
-          %div
-            Balance:
-            = to_currency(@summary[:today][:balance])
-      %tr
-        %td This month
-        %td
-          %div
-            Earning:
-            = to_currency(@summary[:this_month][:incoming])
-          %div
-            Spending:
-            = to_currency(@summary[:this_month][:outgoing])
-          %div
-            Balance:
-            = to_currency(@summary[:this_month][:balance])
-      %tr
-      %tr
-        %td This year
-        %td
-          %div
-            Earning:
-            = to_currency(@summary[:this_year][:incoming])
-          %div
-            Spending:
-            = to_currency(@summary[:this_year][:outgoing])
-          %div
-            Balance:
-            = to_currency(@summary[:this_year][:balance])
-      %tr
+-#.box
+  -#.title
+    -#%h4 Account Summary
+  -#.content
+    -#%table.account-summary
+      -#%tr
+        -#%td Total
+        -#%td
+          -#%div
+            -#Earning:
+            -#= to_currency(@summary[:total][:incoming])
+          -#%div
+            -#Spending:
+            -#= to_currency(@summary[:total][:outgoing])
+          -#%div
+            -#Balance:
+            -#= to_currency(@summary[:total][:balance])
+      -#%tr
+        -#%td Today
+        -#%td
+          -#%div
+            -#Earning:
+            -#= to_currency(@summary[:today][:incoming])
+          -#%div
+            -#Spending:
+            -#= to_currency(@summary[:today][:outgoing])
+          -#%div
+            -#Balance:
+            -#= to_currency(@summary[:today][:balance])
+      -#%tr
+        -#%td This month
+        -#%td
+          -#%div
+            -#Earning:
+            -#= to_currency(@summary[:this_month][:incoming])
+          -#%div
+            -#Spending:
+            -#= to_currency(@summary[:this_month][:outgoing])
+          -#%div
+            -#Balance:
+            -#= to_currency(@summary[:this_month][:balance])
+      -#%tr
+      -#%tr
+        -#%td This year
+        -#%td
+          -#%div
+            -#Earning:
+            -#= to_currency(@summary[:this_year][:incoming])
+          -#%div
+            -#Spending:
+            -#= to_currency(@summary[:this_year][:outgoing])
+          -#%div
+            -#Balance:
+            -#= to_currency(@summary[:this_year][:balance])
+      -#%tr
 

@@ -17,7 +17,7 @@
           = f.input :amount, :as => :string, :input_html => { :maxlength => 15 }
           = f.input :description, :as => :string, :input_html => { :maxlength => 255 }
           = f.input :kind do
-            = f.collection_radio :kind, [[INCOMING, I18n.t("label.incoming")], [OUTGOING, I18n.t("label.outgoing")]], :first, :last
+            = f.collection_radio :kind, TYPES.entries, :first, :last, :prompt => false
           = f.button :submit
   .wrapper
     .box

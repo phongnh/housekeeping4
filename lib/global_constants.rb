@@ -1,14 +1,18 @@
 module GlobalConstants
-  INCOMING = 0
-  OUTGOING = 1
+  INCOME   = 0
+  EXPENSE  = 1
+  TRANSFER = 2
 
   TYPES = {
-    INCOMING => "incoming",
-    OUTGOING => "outgoing"
+    INCOME   => "income",
+    EXPENSE  => "expense",
+    TRANSFER => "transfer"
   }
+
 
   MENU_ITEMS = [
     :dashboard,
+    :transactions,
     :finance,
     :statistics,
     :reports,
@@ -18,13 +22,14 @@ module GlobalConstants
   ]
 
   APP_MENU = {
-    :dashboard  => "app/dashboard",
-    :finance    => "app/finances",
-    :statistics => "app/statistics",
-    :reports    => "app/reports",
-    :categories => "app/categories",
-    :accounts   => "app/accounts",
-    :settings   => "app/settings"
+    :dashboard    => "app/dashboard",
+    :transactions => "app/transactions",
+    :finance      => "app/finances",
+    :statistics   => "app/statistics",
+    :reports      => "app/reports",
+    :categories   => "app/categories",
+    :accounts     => "app/accounts",
+    :settings     => "app/settings"
   }
 end
 

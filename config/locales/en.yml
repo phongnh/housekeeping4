@@ -5,6 +5,7 @@ en:
   app:
     menu:
       dashboard: "Dashboard"
+      transactions: "Transactions"
       finance: "Finance"
       statistics: "Statistics"
       reports: "Reports"
@@ -14,7 +15,8 @@ en:
   action:
     edit: "Edit"
   label:
-    incoming: "Incoming"
-    outgoing: "Outgoing"
     transactions: "Transaction Management"
+  transaction:
+    transfer: "Transfer money to %{account}."
+    receive: "Receive money from %{account}."
 

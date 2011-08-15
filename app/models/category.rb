@@ -14,6 +14,10 @@ class Category < ActiveRecord::Base
   default_scope order(:name)
   scope :root, where(:parent_id => nil)
 
+  validates :name, :presence => true, :uniqueness => true
+
+  has_many :transactions
+
   def self.seed
     categories = [
       { :name => "Auto & Transport" },

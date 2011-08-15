@@ -1,20 +1,19 @@
+= render "form"
 %table.common
   %tr
     %th= human_field_name(:name)
-    %th= human_field_name(:owner)
-    %th= human_field_name(:main)
+    %th= human_field_name(:account_type)
     %th= human_field_name(:description)
-    %th= human_field_name(:earnings)
+    %th= human_field_name(:income)
     %th= human_field_name(:expense)
     %th= human_field_name(:balance)
   - @accounts.each do |a|
     %tr
       %td= a.name
-      %td= a.owner.name
-      %td= a.default
+      %td= a.account_type_id
       %td= a.description
-      %td.number= to_currency(a.earnings)
-      %td.number= to_currency(a.expenses)
+      %td.number= to_currency(a.income)
+      %td.number= to_currency(a.expense)
       %td.number= to_currency(a.balance)
 = paginate @accounts
 

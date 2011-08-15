@@ -2,8 +2,7 @@ class App::FinancesController < ApplicationController
   def index
     @transactions = Transaction.recent.page(params[:page]).per(10)
     @transaction  = Transaction.new
-    @summary      = Transaction.summary(Account.first)
-    end
+  end
 
   def create
     @transaction         = Transaction.new params[:transaction]
