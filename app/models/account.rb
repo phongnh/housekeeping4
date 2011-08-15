@@ -45,7 +45,6 @@ class Account < ActiveRecord::Base
 
   delegate :name, :to => :account_type, :prefix => :type
 
-
   scope :associated, includes(:account_type)
   scope :default, where(:default => true)
 
