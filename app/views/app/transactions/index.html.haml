@@ -1,0 +1,50 @@
+- content_for :js do
+  = javascript_include_tag "finances"
+
+.left-column.width-240
+  .wrapper.margin-bottom-20
+    = render "/shared/account_summary"
+.right-column.margin-left-20.width-700
+  .wrapper.margin-bottom-20
+    .box
+      .title
+        %h4 Add new transaction
+      .content
+        = render "form"
+  .wrapper
+    .box
+      .title
+        %h4= I18n.t("label.transactions")
+      .content
+        %table.common.transactions
+          %colgroup
+            %col.checkbox
+            %col.width-100
+            %col.width-80
+            %col.width-120
+            %col.width-120
+            %col.auto-width
+            %col.width-60
+            %col.width-20
+          %tr
+            %th
+              %input(type="checkbox" class="parent")
+            %th= human_field_name(:account)
+            %th= human_field_name(:date)
+            %th= human_field_name(:category)
+            %th= human_field_name(:amount)
+            %th= human_field_name(:description)
+            %th= human_field_name(:kind)
+            %th
+          - @transactions.each do |t|
+            %tr
+              %td.center= check_box_tag "id[]", t.id, false, :class => "child"
+              %td= t.account.name
+              %td.center= t.date
+              %td= t.category.name
+              %td.right= to_currency(t.amount)
+              %td= t.description
+              %td= t.kind_name
+              %td.center= link_to I18n.t("action.edit"), edit_app_transaction_path(t)
+        = paginate @transactions
+

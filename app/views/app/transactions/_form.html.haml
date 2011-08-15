@@ -1,0 +1,8 @@
+= simple_form_for [:app, @transaction] do |f|
+  = f.association :account, :prompt => false
+  = f.input :date, :as => :string
+  = f.association :category, :prompt => false
+  = f.input :amount, :as => :string, :input_html => { :max_length => 15 }
+  = f.input :description, :as => :string, :input_html => { :max_length => 255 }
+  = f.input :kind, :collection => TYPES.entries, :as => :radio, :label_method => :last, :value_method => :first
+  = f.button :submit
