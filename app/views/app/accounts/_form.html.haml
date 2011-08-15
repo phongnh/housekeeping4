@@ -1,0 +1,5 @@
+= simple_form_for [:app, @account] do |f|
+  = f.input :name, :as => :string
+  = f.input :account_type_id, :collection => AccountType.all, :prompt => false
+  = f.input :description, :as => :string
+  = f.button :submit
