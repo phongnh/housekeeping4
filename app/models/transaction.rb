@@ -28,9 +28,8 @@ class Transaction < ActiveRecord::Base
 
   delegate :name, :to => :account, :prefix => :account
   delegate :name, :to => :category, :prefix => :category
-  
-  # TODO: Use other name for included scope
-  scope :included, includes(:account, :category)
+
+  scope :associated, includes(:account, :category)
   scope :recent, includes(:account, :category).order("date DESC, created_at DESC")
 
   # TODO: Add more validation of account_id and category_id
@@ -39,7 +38,7 @@ class Transaction < ActiveRecord::Base
             :numericality => { :only_integer => true, :allow_nil => true },
             :length       => { :maximum => 15, :allow_nil => true }
   validates :kind, :inclusion => { :in => TYPES.keys }
-  
+
   def is_income?
     kind == INCOME
   end

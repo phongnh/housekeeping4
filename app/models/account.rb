@@ -16,7 +16,7 @@
 
 class Account < ActiveRecord::Base
   DEFAULT_SELECT = "transactions.*, SUM(amount) AS sum_amount"
-  
+
   belongs_to :owner, :class_name => "User", :foreign_key => :owner_id
   belongs_to :account_type
 
@@ -45,7 +45,8 @@ class Account < ActiveRecord::Base
 
   delegate :name, :to => :account_type, :prefix => :type
 
-  scope :included, includes(:account_type)
+
+  scope :associated, includes(:account_type)
   scope :default, where(:default => true)
 
   validates :owner_id, :account_type_id, :name, :presence => true
@@ -66,7 +67,7 @@ class Account < ActiveRecord::Base
     from   = option[:from]
     to     = option[:to]
     amount = option[:amount]
-    
+
     from = Account.find(from) unless from.instance_of? Account
     to   = Account.find(to) unless to.instance_of? Account
 
@@ -79,9 +80,9 @@ class Account < ActiveRecord::Base
       raise Exception unless self.transferable? amount
       self.update_attributes! :expense => self.expense + amount
       other_account.update_attributes! :income => other_account.income + amount
-      option = { 
+      option = {
         :date        => date,
-        # TODO: Use right category for transfering money between accounts 
+        # TODO: Use right category for transfering money between accounts
         :category_id => Category.first.id,
         :amount      => amount,
         :kind        => TRANSFER,
