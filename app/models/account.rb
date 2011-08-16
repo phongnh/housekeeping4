@@ -62,17 +62,67 @@ class Account < ActiveRecord::Base
     income - expense
   end
 
-  def self.transfer(option)
-    from   = option[:from]
-    to     = option[:to]
-    amount = option[:amount]
+  def import!(path)
+    data = self.class.read_text_file(path)
+    # Only process 20 data rows now
+    # TODO: Remove limit of the number of data rows later
+    data          = data[0...20]
+    total_income  = 0
+    total_expense = 0
+    transactions  = []
+    # Cache found categories
+    categories    = {}
+    data.each do |d|
+      # Find category which transaction belongs to
+      category_name = d.delete(:category_name)
+      category = categories[category_name] || Category.find_by_name(category_name)
+      categories[category_name] = category
 
-    from = Account.find(from) unless from.instance_of? Account
-    to   = Account.find(to) unless to.instance_of? Account
-
-    from.transfer!(to, amount, option[:date])
+      # Not support yet creating user's category
+      # TODO: Need to allow user to create own category of user
+      d.merge! :category => category, :account_id => self.id
+      transaction = Transaction.new(d)
+      # Not support yet transfer type of transaction
+      valid = transaction.valid?
+      next if !valid || (valid && transaction.is_transfer?)
+      transactions << transaction
+      if transaction.is_income?
+        total_income += transaction.amount
+      else # transaction.is_expense?
+        total_expense += transaction.amount 
+      end
+    end
+    self.class.transaction do
+      transactions.each(&:save!)
+      self.update_attributes! :income => total_income, :expense => total_expense
+    end
+    self
   end
 
+  def self.read_text_file(path, delimiter=";")
+    f = File.open(path, "r")
+    data = f.readlines
+    data.collect! do |line|
+      columns = line.chomp.split(delimiter)
+      columns[DATE] = begin
+                        Date.strptime(columns[DATE], "%d-%m-%Y")
+                      rescue
+                        Date.strptime(columns[DATE], "%d/%m/%Y")
+                      end
+      # Leave model process validating
+      {
+        :kind          => columns[KIND].to_i,
+        :date          => columns[DATE],
+        :category_name => columns[CATEGORY_NAME],
+        # TODO: Need to support amount in format of float later
+        :amount        => columns[AMOUNT].to_i,
+        :description   => columns[DESCRIPTION]
+      }
+    end
+    f.close
+    data
+  end
+  
   def transfer!(other_account, amount, date)
     raise Exception if self == other_account
     self.class.transaction do
@@ -92,6 +142,17 @@ class Account < ActiveRecord::Base
       other_account.create_transaction! option
     end
     true
+  end
+
+  def self.transfer(option)
+    from   = option[:from]
+    to     = option[:to]
+    amount = option[:amount]
+
+    from = Account.find(from) unless from.instance_of? Account
+    to   = Account.find(to) unless to.instance_of? Account
+
+    from.transfer!(to, amount, option[:date])
   end
 
   protected

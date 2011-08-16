@@ -9,6 +9,7 @@ module GlobalConstants
     TRANSFER => "transfer"
   }
 
+  NORMAL_TYPES = TYPES.reject { |key, value| key == TRANSFER }
 
   MENU_ITEMS = [
     :dashboard,
@@ -31,5 +32,20 @@ module GlobalConstants
     :accounts     => "app/accounts",
     :settings     => "app/settings"
   }
+
+  # Position of columns in transactions table
+  KIND          = 0
+  DATE          = 1
+  CATEGORY_NAME = 2
+  AMOUNT        = 3
+  DESCRIPTION   = 4
+
+  #class Position
+    #KIND          = 0
+    #DATE          = 1
+    #CATEGORY_NAME = 2
+    #AMOUNT        = 3
+    #DESCRIPTION   = 4
+  #end
 end
 

@@ -21,6 +21,8 @@
 class Transaction < ActiveRecord::Base
   #default_scope includes(:owner, :account, :category)
 
+  before_create :update_date
+
   # TODO: Change owner to payee
   belongs_to :owner, :class_name => "User", :foreign_key => :owner_id
   belongs_to :account
@@ -35,7 +37,7 @@ class Transaction < ActiveRecord::Base
   # TODO: Add more validation of account_id and category_id
   validates :account_id, :date, :category_id, :amount, :kind, :presence => true
   validates :amount,
-            :numericality => { :only_integer => true, :allow_nil => true },
+            :numericality => { :only_integer => true, :greater_than => 0, :allow_nil => true },
             :length       => { :maximum => 15, :allow_nil => true }
   validates :kind, :inclusion => { :in => TYPES.keys }
 
@@ -57,8 +59,8 @@ class Transaction < ActiveRecord::Base
 
   def save_and_update_account!
     self.class.transaction do
-      self.valid?
-      self.update_date
+      #self.valid?
+      #self.update_date
       self.save!
       self.update_account!
     end
@@ -83,6 +85,5 @@ class Transaction < ActiveRecord::Base
     end
     account.update_attributes! options
   end
-
 end
 
