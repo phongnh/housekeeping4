@@ -77,3 +77,47 @@ table.common col.width-200 {
     width: 200px;
 }
 
+div.form div.input {
+    display: block;
+}
+
+div.form div.input * {
+    vertical-align: middle;
+}
+
+div.form div.input label.integer,
+div.form div.input label.string,
+div.form div.input label.select {
+    position: absolute;
+}
+
+div.form div.input span.error {
+    display: block;
+    color: red;
+    margin-left: 100px;
+}
+
+div.form div.input input[type=text],
+div.form div.input select {
+    margin-left: 100px;
+}
+
+div.form div.input > div {
+    margin-left: 95px;
+    height: 24px;
+}
+
+div.form div.input > div input {
+}
+
+div.form input[type=submit] {
+    margin-left: 100px;
+}
+
+div.form div.input input[type=text] {
+    width: 200px;
+}
+
+div.form div.input select {
+    width: 206px;
+}

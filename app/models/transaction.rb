@@ -57,6 +57,7 @@ class Transaction < ActiveRecord::Base
 
   def save_and_update_account!
     self.class.transaction do
+      self.valid?
       self.update_date
       self.save!
       self.update_account!
