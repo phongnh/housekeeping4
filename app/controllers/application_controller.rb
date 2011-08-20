@@ -10,6 +10,9 @@ class ApplicationController < ActionController::Base
 
   helper_method :log
 
+
+  protected
+
   def inspect_params
     log("params", params)
   end

@@ -14,23 +14,15 @@ module GlobalConstants
   MENU_ITEMS = [
     :dashboard,
     :transactions,
-    :finance,
-    :statistics,
-    :reports,
     :categories,
-    :accounts,
-    :settings
+    :accounts
   ]
 
   APP_MENU = {
     :dashboard    => "app/dashboard",
     :transactions => "app/transactions",
-    :finance      => "app/finances",
-    :statistics   => "app/statistics",
-    :reports      => "app/reports",
     :categories   => "app/categories",
-    :accounts     => "app/accounts",
-    :settings     => "app/settings"
+    :accounts     => "app/accounts"
   }
 
   # Position of columns in transactions table
