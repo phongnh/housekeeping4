@@ -57,6 +57,16 @@ class Transaction < ActiveRecord::Base
     TYPES[kind]
   end
 
+  def formatted_date
+    date.strftime("%d-%m-%Y")
+  end
+
+  def to_format(*args)
+    options = args.extract_options!
+    format = args.first || :csv
+    send("to_#{format}_format", options)
+  end
+
   def save_and_update_account!
     self.class.transaction do
       #self.valid?
@@ -67,7 +77,24 @@ class Transaction < ActiveRecord::Base
     self
   end
 
+  def self.csv_header(delimiter=",")
+    header.join(delimiter)
+  end
+
   protected
+
+  def self.header
+    ["Date", "Account", "Category", "Kind", "Amount", "Description"]
+  end
+
+  def to_exported_format
+    [formatted_date, account_name, category_name, kind_name, amount, description]
+  end
+
+  def to_csv_format(options)
+    delimiter = options[:delimiter] || ","
+    to_exported_format.join(delimiter)
+  end
 
   def update_date
     self.year  = self.date.year

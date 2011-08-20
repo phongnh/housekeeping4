@@ -62,6 +62,22 @@ class Account < ActiveRecord::Base
     income - expense
   end
 
+  def exported_name
+    name.strip.gsub(/\s+/, "_")
+  end
+
+  def export!(file_name)
+    transactions = self.transactions
+    path = "#{Rails.root}/tmp/#{file_name}"
+    file = File.new(path, "r")
+    file.puts Transaction.csv_header("\t")
+    transactions.each do |t|
+      file.puts t.to_format(:csv, :delimiter => "\t")
+    end
+    file.close
+  end
+
+  # TODO: Support importing statements from multi-account
   def import!(path)
     data = self.class.read_text_file(path)
     # Only process 20 data rows now
@@ -89,7 +105,7 @@ class Account < ActiveRecord::Base
       if transaction.is_income?
         total_income += transaction.amount
       else # transaction.is_expense?
-        total_expense += transaction.amount 
+        total_expense += transaction.amount
       end
     end
     self.class.transaction do
@@ -99,7 +115,23 @@ class Account < ActiveRecord::Base
     self
   end
 
+  def export
+    self.class.export(self.transactions, "#{self.exported_name}_#{Time.now.to_i}.csv")
+  end
+
+  def self.export(transactions, file_name)
+    file = File.new(file_name, "w")
+
+    file.puts Transaction.csv_header("\t")
+    transactions.each do |t|
+      file.puts t.to_format(:csv, :delimiter => "\t")
+    end
+
+    file.close
+  end
+
   def self.read_text_file(path, delimiter=";")
+    # TODO: Need to check format data before importing
     f = File.open(path, "r")
     data = f.readlines
     data.collect! do |line|
@@ -122,7 +154,7 @@ class Account < ActiveRecord::Base
     f.close
     data
   end
-  
+
   def transfer!(other_account, amount, date)
     raise Exception if self == other_account
     self.class.transaction do
@@ -144,21 +176,21 @@ class Account < ActiveRecord::Base
     true
   end
 
-  def self.transfer(option)
-    from   = option[:from]
-    to     = option[:to]
-    amount = option[:amount]
+  def self.transfer(options)
+    from   = options[:from]
+    to     = options[:to]
+    amount = options[:amount]
 
     from = Account.find(from) unless from.instance_of? Account
     to   = Account.find(to) unless to.instance_of? Account
 
-    from.transfer!(to, amount, option[:date])
+    from.transfer!(to, amount, options[:date])
   end
 
   protected
 
-  def create_transaction!(option)
-    transaction = self.transactions.build option
+  def create_transaction!(options)
+    transaction = self.transactions.build options
     transaction.save!
     transaction
   end
