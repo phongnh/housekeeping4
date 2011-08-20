@@ -32,7 +32,8 @@ class Transaction < ActiveRecord::Base
   delegate :name, :to => :category, :prefix => :category
 
   scope :associated, includes(:account, :category)
-  scope :recent, includes(:account, :category).order("date DESC, created_at DESC")
+  scope :ordered, order("date DESC, created_at DESC")
+  scope :recent, associated.ordered
 
   # TODO: Add more validation of account_id and category_id
   validates :account_id, :date, :category_id, :amount, :kind, :presence => true

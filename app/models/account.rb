@@ -116,16 +116,17 @@ class Account < ActiveRecord::Base
   end
 
   def export
-    self.class.export(self.transactions, "#{self.exported_name}_#{Time.now.to_i}.csv")
+    transactions = self.transactions.associated.ordered
+    self.class.export(transactions, "#{exported_name}_#{Time.now.to_i}.csv")
   end
 
   def self.export(transactions, file_name)
     file = File.new(file_name, "w")
 
+    data = transactions.collect { |t| t.to_format(:csv, :delimiter => "\t") }.join("\n")
+
     file.puts Transaction.csv_header("\t")
-    transactions.each do |t|
-      file.puts t.to_format(:csv, :delimiter => "\t")
-    end
+    file.puts data
 
     file.close
   end
