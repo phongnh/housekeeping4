@@ -1,4 +1,4 @@
-class App::TransactionsController < ApplicationController
+class App::TransactionsController < AppController
   def index
     @transactions = Transaction.associated.page(params[:page]).per(10)
     @transaction = Transaction.new

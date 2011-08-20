@@ -1,4 +1,4 @@
-class App::CategoriesController < ApplicationController
+class App::CategoriesController < AppController
   def index
     @categories = Category.root.page(params[:page]).per(10)
     @category = Category.new

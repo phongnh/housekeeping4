@@ -1,11 +1,11 @@
 # encoding: utf-8
 
 class Fixnum
-  
+
   def mon(locale=I18n.locale)
     MONTHS[locale].try(:[], self)
   end
-  
+
   private
   MONTHS = {
     :vi => {
@@ -22,7 +22,7 @@ class Fixnum
       11 => "Tháng 11",
       12 => "Tháng 12"
     },
-    
+
     :en => {
       1  => "January",
       2  => "February",
@@ -36,6 +36,6 @@ class Fixnum
       10 => "October",
       11 => "November",
       12 => "December"
-    } 
+    }
   }
 end

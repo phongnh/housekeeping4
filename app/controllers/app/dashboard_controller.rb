@@ -1,4 +1,4 @@
-class App::DashboardController < ApplicationController
+class App::DashboardController < AppController
   def index
   end
 
