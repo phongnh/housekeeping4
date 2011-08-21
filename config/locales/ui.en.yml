@@ -1,0 +1,26 @@
+# Sample localization file for English. Add more files in this directory for other locales.
+# See http://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
+
+en:
+  app:
+    menu:
+      dashboard: "Dashboard"
+      transactions: "Transactions"
+      finance: "Finance"
+      statistics: "Statistics"
+      reports: "Reports"
+      categories: "Categories"
+      accounts: "Accounts"
+      settings: "Settings"
+  action:
+    edit: "Edit"
+  label:
+    transactions: "Transaction Management"
+  transaction:
+    transfer: "Transfer money to %{account}."
+    receive: "Receive money from %{account}."
+
+  activerecord:
+    attributes:
+      account:
+        account_type: "Type"

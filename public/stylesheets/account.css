@@ -53,8 +53,17 @@ form.account select {
   width: 206px;
 }
 
+form.account span.error,
 form.account input[type=submit] {
   clear: left;
   display: block;
+}
+
+form.account input[type=submit] {
   margin: 5px 0 5px 160px;
+}
+
+form.account span.error {
+  margin: 2px 0 2px 160px;
+  color: red;
 }

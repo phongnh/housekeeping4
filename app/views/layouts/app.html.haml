@@ -16,8 +16,8 @@
         .right
           #submenu
             = link_to "Nguyễn Hoài Phong", "", :class => :link
-            = link_to "Logout", "", :class => :link
-            = link_to "Help", "", :class => :link
+            = link_to I18n.t("action.logout"), "", :class => :link
+            = link_to I18n.t("action.help"), "", :class => :link
     #menu
       .container
         - MENU_ITEMS.each do |m|

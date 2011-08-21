@@ -239,3 +239,14 @@ vi:
       words_connector: ", "
       two_words_connector: " và "
       last_word_connector: ", và "
+
+  helpers:
+    select:
+      # Default value for :prompt => true in FormOptionsHelper
+      prompt: "Vui lòng chọn"
+
+    # Default translation keys for submit FormHelper
+    submit:
+      create: 'Tạo %{model}'
+      update: 'Cập nhật %{model}'
+      submit: 'Lưu %{model}'

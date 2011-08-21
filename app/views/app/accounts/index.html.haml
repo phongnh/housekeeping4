@@ -3,11 +3,11 @@
 
 #new-account-section.prepend-top.append-bottom
   .wrapper
-    %h2.bottom New Account
+    %h2.bottom= I18n.t("account.new")
     %hr
     = render "form", :account => @account
 
-%h2.bottom Accounts
+%h2.bottom= I18n.t("account.list")
 %table.common.account
   %colgroup
     %col.name/
@@ -27,9 +27,9 @@
     %tr
       %td= a.name
       %td= a.type_name
-      %td.number= to_currency(a.income + 100000000000)
+      %td.number= to_currency(a.income)
       %td.number= to_currency(a.expense)
-      %td.number= to_currency(-100_000_000_000 + a.balance)
+      %td.number= to_currency(a.balance)
       %td= a.description
 = paginate @accounts
 
