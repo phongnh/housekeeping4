@@ -20,3 +20,7 @@ en:
     transfer: "Transfer money to %{account}."
     receive: "Receive money from %{account}."
 
+  activerecord:
+    attributes:
+      account:
+        account_type: "Type"

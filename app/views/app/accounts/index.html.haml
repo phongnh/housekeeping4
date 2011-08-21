@@ -1,19 +1,35 @@
-= render "form"
-%table.common
+= content_for :css do
+  = stylesheet_link_tag "account"
+
+#new-account-section.prepend-top.append-bottom
+  .wrapper
+    %h2.bottom New Account
+    %hr
+    = render "form", :account => @account
+
+%h2.bottom Accounts
+%table.common.account
+  %colgroup
+    %col.name/
+    %col.type/
+    %col.income/
+    %col.expense/
+    %col.balance/
+    %col.description/
   %tr
-    %th= human_field_name(:name)
-    %th= human_field_name(:account_type)
-    %th= human_field_name(:description)
-    %th= human_field_name(:income)
-    %th= human_field_name(:expense)
-    %th= human_field_name(:balance)
+    %th= human_field_name(:name, Account)
+    %th= human_field_name(:account_type, Account)
+    %th= human_field_name(:income, Account)
+    %th= human_field_name(:expense, Account)
+    %th= human_field_name(:balance, Account)
+    %th= human_field_name(:description, Account)
   - @accounts.each do |a|
     %tr
       %td= a.name
-      %td= a.account_type_id
-      %td= a.description
-      %td.number= to_currency(a.income)
+      %td= a.type_name
+      %td.number= to_currency(a.income + 100000000000)
       %td.number= to_currency(a.expense)
-      %td.number= to_currency(a.balance)
+      %td.number= to_currency(-100_000_000_000 + a.balance)
+      %td= a.description
 = paginate @accounts
 

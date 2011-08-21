@@ -42,6 +42,9 @@ module Housekeeping4
 
     # CSS files for :960gs
     config.action_view.stylesheet_expansions[:gs] = %w(960gs/reset 960gs/text 960gs/960)
+    config.action_view.stylesheet_expansions[:blueprint] = %w(blueprint/screen)
+    config.action_view.stylesheet_expansions[:blueprint_print] = %w(blueprint/print)
+    config.action_view.stylesheet_expansions[:blueprint_ie] = %w(blueprint/ie)
     config.action_view.stylesheet_expansions[:jquery] = %w(smoothness/jquery-ui)
 
     # Configure the default encoding used in templates for Ruby 1.9.

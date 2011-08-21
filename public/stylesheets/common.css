@@ -2,8 +2,7 @@ table.common {
     width: 100%;
     border-collapse: separate;
     border-spacing: 1px;
-    border: 1px solid #CCC;
-    margin: 0;
+    border: 1px solid #999;
 }
 
 table.common th,
@@ -13,15 +12,14 @@ table.common td {
 }
 
 table.common th {
-    vertical-align: middle;
-    background-color: #DDD;
-    border: 1px solid #CCC;
+    background-color: #6D6D6D;
+    color: white;
     text-align: center;
     font-weight: bold;
 }
 
 table.common td {
-    background-color: #F0F0F0;
+    background-color: #FCFCFC !important;
 }
 
 table.common td.center {
@@ -41,83 +39,47 @@ table.common col.auto-width {
     width: auto;
 }
 
-table.common col.width-20 {
-    width: 20px;
-}
+/*div.form div.input {*/
+    /*display: block;*/
+/*}*/
 
-table.common col.width-40 {
-    width: 40px;
-}
+/*div.form div.input * {*/
+    /*vertical-align: middle;*/
+/*}*/
 
-table.common col.width-60 {
-    width: 60px;
-}
+/*div.form div.input label.integer,*/
+/*div.form div.input label.string,*/
+/*div.form div.input label.select {*/
+    /*position: absolute;*/
+/*}*/
 
-table.common col.width-80 {
-    width: 80px;
-}
+/*div.form div.input span.error {*/
+    /*display: block;*/
+    /*color: red;*/
+    /*margin-left: 100px;*/
+/*}*/
 
-table.common col.width-100 {
-    width: 100px;
-}
+/*div.form div.input input[type=text],*/
+/*div.form div.input select {*/
+    /*margin-left: 100px;*/
+/*}*/
 
-table.common col.width-120 {
-    width: 120px;
-}
+/*div.form div.input > div {*/
+    /*margin-left: 95px;*/
+    /*height: 24px;*/
+/*}*/
 
-table.common col.width-140 {
-    width: 140px;
-}
+/*div.form div.input > div input {*/
+/*}*/
 
-table.common col.width-150 {
-    width: 150px;
-}
+/*div.form input[type=submit] {*/
+    /*margin-left: 100px;*/
+/*}*/
 
-table.common col.width-200 {
-    width: 200px;
-}
+/*div.form div.input input[type=text] {*/
+    /*width: 200px;*/
+/*}*/
 
-div.form div.input {
-    display: block;
-}
-
-div.form div.input * {
-    vertical-align: middle;
-}
-
-div.form div.input label.integer,
-div.form div.input label.string,
-div.form div.input label.select {
-    position: absolute;
-}
-
-div.form div.input span.error {
-    display: block;
-    color: red;
-    margin-left: 100px;
-}
-
-div.form div.input input[type=text],
-div.form div.input select {
-    margin-left: 100px;
-}
-
-div.form div.input > div {
-    margin-left: 95px;
-    height: 24px;
-}
-
-div.form div.input > div input {
-}
-
-div.form input[type=submit] {
-    margin-left: 100px;
-}
-
-div.form div.input input[type=text] {
-    width: 200px;
-}
-
-div.form div.input select {
-    width: 206px;
-}
+/*div.form div.input select {*/
+    /*width: 206px;*/
+/*}*/

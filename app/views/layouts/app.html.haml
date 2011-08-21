@@ -2,12 +2,40 @@
 %html
   %head
     %title Housekeeping
-    = stylesheet_link_tag :gs
-    = stylesheet_link_tag "common"
+    = stylesheet_link_tag :blueprint, :media => "screen, projection"
+    /[if lt IE 8]
+      = stylesheet_link_tag :blueprint_ie, :media => "screen, projection"
+    = stylesheet_link_tag "app_layout", "common"
     = yield :css
     = csrf_meta_tag
   %body
-
-    = javascript_include_tag :defaults
+    #header
+      .container
+        .left
+          = link_to "HOUSEKEEPING", app_root_path, :class => :logo
+        .right
+          #submenu
+            = link_to "Nguyễn Hoài Phong", "", :class => :link
+            = link_to "Logout", "", :class => :link
+            = link_to "Help", "", :class => :link
+    #menu
+      .container
+        - MENU_ITEMS.each do |m|
+          .left
+            - if APP_MENU[m] == params[:controller]
+              %span.link.selected= I18n.t("app.menu.#{m}")
+            - else
+              = link_to I18n.t("app.menu.#{m}"), "/#{APP_MENU[m]}", :class => :link
+    -##page
+      -#.container.prepend-top.append-bottom
+        -#.main-wrap
+          -##main= yield
+    #main
+      .container
+        = yield
+    #footer
+      .container
+        = render :partial => "/shared/footer"
+    = javascript_include_tag :jquery
     = yield :js
 

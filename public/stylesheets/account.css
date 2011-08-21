@@ -1,0 +1,60 @@
+table.account col.name {
+  width: 160px;
+}
+
+table.account col.type {
+  width: 120px;
+}
+
+table.account col.income,
+table.account col.expense,
+table.account col.balance {
+  width: 160px;
+}
+
+table.account col.description {
+  width: auto;
+}
+
+#new-account-section {
+  background-color: #FCFCFC;
+  border-radius: 8px;
+  -moz-border-radius: 8px;
+  -web-border-radius: 8px;
+}
+
+#new-account-section .wrapper {
+  padding: 10px;
+}
+
+form.account .input {
+  display: block;
+  clear: left;
+}
+
+form.account label,
+form.account input[type=text],
+form.account select {
+  float: left;
+  margin: 5px 0;
+  vertical-align: middle;
+}
+
+form.account label {
+  display: block;
+  width: 160px;
+}
+
+form.account input[type=text] {
+  width: 200px;
+}
+
+form.account select {
+  width: 206px;
+}
+
+form.account input[type=submit] {
+  clear: left;
+  display: block;
+  margin: 5px 0 5px 160px;
+}

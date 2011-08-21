@@ -1,5 +1,5 @@
 module ApplicationHelper
-  def human_field_name(field, required=nil, klass=ActiveRecord::Base)
+  def human_field_name(field, klass=ActiveRecord::Base, required=nil)
     [klass.human_attribute_name(field), required].reject{|e| e.blank?}.join("")
   end
 
