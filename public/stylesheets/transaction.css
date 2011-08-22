@@ -41,3 +41,24 @@ table.transactions col.action {
   width: 60px;
 }
 
+form.transaction label.string,
+form.transaction label.integer,
+form.transaction label.select {
+  width: 120px;
+}
+
+form.transaction input[type=text] {
+  width: 250px;
+}
+
+form.transaction select {
+  width: 256px;
+}
+
+form.transaction input[type=submit] {
+  margin: 5px 0 5px 120px;
+}
+
+form.transaction span.error {
+  margin: 2px 0 2px 120px;
+}

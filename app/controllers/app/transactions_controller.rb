@@ -1,6 +1,6 @@
 class App::TransactionsController < AppController
   def index
-    @transactions = Transaction.associated.page(params[:page]).per(10)
+    @transactions = Transaction.associated.ordered.page(params[:page]).per(10)
     @transaction = Transaction.new
   end
 
@@ -16,7 +16,7 @@ class App::TransactionsController < AppController
   rescue Exception => ex
     puts ex.message
     puts ex.backtrace
-    @transactions = Transaction.associated.page(params[:page]).per(10)
+    @transactions = Transaction.associated.ordered.page(params[:page]).per(10)
     render :action => "index"
   end
 
