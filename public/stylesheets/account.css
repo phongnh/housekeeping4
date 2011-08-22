@@ -1,47 +1,39 @@
-table.account col.name {
+/*#new-account-section {*/
+  /*background-color: #FCFCFC;*/
+  /*border-radius: 8px;*/
+  /*-moz-border-radius: 8px;*/
+  /*-webkit-border-radius: 8px;*/
+  /*box-shadow: 0 0 8px #888;*/
+  /*-moz-box-shadow: 0 0 8px #888;*/
+  /*-webkit-box-shadow: 0 0 8px #888;*/
+  /*border: 1px solid #999;*/
+/*}*/
+
+/*#new-account-section .wrapper {*/
+  /*padding: 10px;*/
+/*}*/
+
+table.accounts col.name {
   width: 160px;
 }
 
-table.account col.type {
+table.accounts col.type {
   width: 120px;
 }
 
-table.account col.income,
-table.account col.expense,
-table.account col.balance {
+table.accounts col.income,
+table.accounts col.expense,
+table.accounts col.balance {
   width: 160px;
 }
 
-table.account col.description {
+table.accounts col.description {
   width: auto;
 }
 
-#new-account-section {
-  background-color: #FCFCFC;
-  border-radius: 8px;
-  -moz-border-radius: 8px;
-  -web-border-radius: 8px;
-}
-
-#new-account-section .wrapper {
-  padding: 10px;
-}
-
-form.account .input {
-  display: block;
-  clear: left;
-}
-
-form.account label,
-form.account input[type=text],
-form.account select {
-  float: left;
-  margin: 5px 0;
-  vertical-align: middle;
-}
-
-form.account label {
-  display: block;
+form.account label.string,
+form.account label.integer,
+form.account label.select {
   width: 160px;
 }
 
@@ -53,17 +45,10 @@ form.account select {
   width: 206px;
 }
 
-form.account span.error,
-form.account input[type=submit] {
-  clear: left;
-  display: block;
-}
-
 form.account input[type=submit] {
   margin: 5px 0 5px 160px;
 }
 
 form.account span.error {
   margin: 2px 0 2px 160px;
-  color: red;
 }

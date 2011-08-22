@@ -7,23 +7,23 @@ module GlobalConstants
     INCOME   => "income",
     EXPENSE  => "expense",
     TRANSFER => "transfer"
-  }
+  }.freeze
 
-  NORMAL_TYPES = TYPES.reject { |key, value| key == TRANSFER }
+  NORMAL_TYPES = TYPES.reject { |key, value| key == TRANSFER }.freeze
 
   MENU_ITEMS = [
     :dashboard,
     :transactions,
     :categories,
     :accounts
-  ]
+  ].freeze
 
   APP_MENU = {
     :dashboard    => "app/dashboard",
     :transactions => "app/transactions",
     :categories   => "app/categories",
     :accounts     => "app/accounts"
-  }
+  }.freeze
 
   # Position of columns in transactions table
   KIND          = 0

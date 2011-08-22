@@ -1,14 +1,14 @@
 = content_for :css do
-  = stylesheet_link_tag "account"
+  = stylesheet_link_tag "simple_form", "account"
 
-#new-account-section.prepend-top.append-bottom
+.new-section.prepend-top.append-bottom
   .wrapper
     %h2.bottom= I18n.t("account.new")
     %hr
     = render "form", :account => @account
 
 %h2.bottom= I18n.t("account.list")
-%table.common.account
+%table.common.accounts
   %colgroup
     %col.name/
     %col.type/

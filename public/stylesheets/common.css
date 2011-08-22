@@ -15,7 +15,10 @@ table.common th {
     background-color: #6D6D6D;
     color: white;
     text-align: center;
-    font-weight: bold;
+}
+
+table.common th input {
+    vertical-align: middle;
 }
 
 table.common td {
@@ -26,8 +29,7 @@ table.common td.center {
     text-align: center;
 }
 
-table.common td.number,
-table.common td.right {
+table.common td.number {
     text-align: right;
 }
 
@@ -37,6 +39,21 @@ table.common col.checkbox {
 
 table.common col.auto-width {
     width: auto;
+}
+
+.new-section {
+  background-color: #FCFCFC;
+  border: 1px solid #999;
+  border-radius: 8px;
+  -moz-border-radius: 8px;
+  -webkit-border-radius: 8px;
+  box-shadow: 0 0 8px #888;
+  -moz-box-shadow: 0 0 8px #888;
+  -webkit-box-shadow: 0 0 8px #888;
+}
+
+.new-section .wrapper {
+  padding: 10px;
 }
 
 /*div.form div.input {*/

@@ -16,9 +16,15 @@ vi:
     new: "Tạo mới tài khoản"
     list: "Danh sách tài khoản"
   transaction:
+    new: "Tạo mới giao dịch"
+    list: "Danh sách giao dịch"
     transfer: "Chuyển tiền đến %{account}."
     receive: "Nhận tiền từ %{account}."
-
+    type:
+      income: "Thu nhập"
+      expense: "Chi tiêu"
+      transfer: "Chuyển khoản"
+  
   activerecord:
     attributes:
       account:
@@ -29,5 +35,15 @@ vi:
         expense: "Chi tiêu"
         balance: "Số dư"
         description: "Mô tả"
+      transaction:
+        account: "Tài khoản"
+        account_id: "Tài khoản"
+        date: "Ngày"
+        category: "Danh mục"
+        category_id: "Danh mục"
+        amount: "Số tiền"
+        kind: "Loại"
+        description: "Mô tả"
     models:
       account: "Tài Khoản"
+      transaction: "Giao Dịch"

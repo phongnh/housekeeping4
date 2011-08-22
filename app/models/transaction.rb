@@ -55,7 +55,7 @@ class Transaction < ActiveRecord::Base
   end
 
   def kind_name
-    TYPES[kind]
+    I18n.t("transaction.type.#{TYPES[kind]}")
   end
 
   def formatted_date

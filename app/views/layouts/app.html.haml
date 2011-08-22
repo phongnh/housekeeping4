@@ -6,6 +6,7 @@
     /[if lt IE 8]
       = stylesheet_link_tag :blueprint_ie, :media => "screen, projection"
     = stylesheet_link_tag "app_layout", "common"
+    = stylesheet_link_tag :jquery
     = yield :css
     = csrf_meta_tag
   %body

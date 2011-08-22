@@ -1,0 +1,43 @@
+/*#new-transaction-section {*/
+  /*background-color: #FCFCFC;*/
+  /*border: 1px solid #999;*/
+  /*border-radius: 8px;*/
+  /*-moz-border-radius: 8px;*/
+  /*-webkit-border-radius: 8px;*/
+  /*box-shadow: 0 0 8px #888;*/
+  /*-moz-box-shadow: 0 0 8px #888;*/
+  /*-webkit-box-shadow: 0 0 8px #888;*/
+/*}*/
+
+/*#new-transaction-section .wrapper {*/
+  /*padding: 10px;*/
+/*}*/
+
+table.transactions col.date {
+  width: 80px;
+}
+
+table.transactions col.account {
+  width: 180px;
+}
+
+table.transactions col.category {
+  width: 160px;
+}
+
+table.transactions col.kind {
+  width: 80px;
+}
+
+table.transactions col.amount {
+  width: 160px;
+}
+
+table.transactions col.description {
+  width: auto;
+}
+
+table.transactions col.action {
+  width: 60px;
+}
+
