@@ -11,15 +11,29 @@ class AccountType < ActiveRecord::Base
 
   validates :name, :presence => true, :uniqueness => true
 
+  #def self.seed
+    #types = [
+      #{ :name => "Cash" },
+      #{ :name => "Checking" },
+      #{ :name => "Savings" },
+      #{ :name => "Credit Card" },
+      #{ :name => "Investment" },
+      #{ :name => "Liability" },
+      #{ :name => "Other" }
+    #]
+    #self.create types
+  #end
+
   def self.seed
     types = [
-      { :name => "Cash" },
-      { :name => "Checking" },
-      { :name => "Savings" },    
-      { :name => "Credit Card" },
-      { :name => "Investment" },
-      { :name => "Liability" },
-      { :name => "Other" }
+      { :name => "Tiền mặt" },
+      { :name => "Ngân phiếu" },
+      { :name => "Tiền tiết kiệm" },
+      { :name => "Thẻ tín dụng" },
+      { :name => "Thẻ ATM" },
+      { :name => "Đầu tư" },
+      { :name => "Khoản nợ" },
+      { :name => "Khác" }
     ]
     self.create types
   end
