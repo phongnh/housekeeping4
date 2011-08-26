@@ -25,6 +25,7 @@ table.common td {
     background-color: #FCFCFC !important;
 }
 
+.center,
 table.common td.center {
     text-align: center;
 }
@@ -41,6 +42,8 @@ table.common col.auto-width {
     width: auto;
 }
 
+
+.box-section,
 .new-section {
   background-color: #FCFCFC;
   border: 1px solid #999;
@@ -54,6 +57,21 @@ table.common col.auto-width {
 
 .new-section .wrapper {
   padding: 10px;
+}
+
+.box-section .wrapper {
+  padding-top: 10px;
+  /*border-radius: 0 0 8px 8px;*/
+  /*-moz-border-radius: 0 0 8px 8px;*/
+  /*-webkit-border-radius: 0 0 8px 8px;*/
+}
+
+h3.header {
+  padding-bottom: 5px;
+}
+
+h3 {
+  font-weight: bold;
 }
 
 /*div.form div.input {*/

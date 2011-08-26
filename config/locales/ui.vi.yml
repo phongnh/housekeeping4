@@ -11,7 +11,8 @@ vi:
     logout: "Thoát"
     help: "Trợ giúp"
   label:
-    transactions: "Quản lý giao dịch"
+    transactions: "Giao dịch"
+    accounts: "Tài khoản"
   account:
     new: "Tạo mới tài khoản"
     list: "Danh sách tài khoản"

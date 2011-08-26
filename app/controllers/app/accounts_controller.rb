@@ -1,6 +1,6 @@
 class App::AccountsController < AppController
   def index
-    @accounts = Account.associated.ordered.page(params[:page]).per(10)
+    @accounts = Account.associated.ordered
     @account  = Account.new
   end
 
@@ -14,8 +14,7 @@ class App::AccountsController < AppController
     if @account.save
       redirect_to app_accounts_path
     else
-      @accounts = Account.includes(:owner).order([:owner_id, :name]).
-                          page(params[:page]).per(10)
+      @accounts = Account.includes(:owner).order([:owner_id, :name])
       render :action => "index"
     end
   end

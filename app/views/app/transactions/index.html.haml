@@ -1,42 +1,60 @@
 = content_for :css do
   = stylesheet_link_tag "simple_form", "transaction"
 
-.new-section.prepend-top.append-bottom
-  .wrapper
-    %h2.bottom= I18n.t("transaction.new")
-    %hr/
-    = render "form", :transaction => @transaction
+#content.prepend-top.append-bottom.clearfix
+  .left.span-6
+    .box-section
+      .wrapper
+        %h3.header.bottom.center= I18n.t("label.accounts")
+        .accounts
+          - @accounts.each_with_index do |a, index|
+            - final_css_class = (index == @accounts.length - 1) ? :final : nil
+            - selected_css_class = (a.id.to_i == params[:account_id].to_i) ? :selected : nil
+            = link_to a.link, :class => [ :link, :clearfix, final_css_class, selected_css_class] do
+              .left.name= a.name
+              .right.size= a.transaction_size
 
-%h2.bottom= I18n.t("transaction.list")
-%table.common.transactions
-  %colgroup
-    %col.checkbox
-    %col.date
-    %col.account
-    %col.category
-    %col.kind
-    %col.amount
-    %col.description
-    %col.action
-  %tr
-    %th
-      %input(type="checkbox" class="parent")
-    %th= human_field_name(:date, Transaction)
-    %th= human_field_name(:account, Transaction)
-    %th= human_field_name(:category, Transaction)
-    %th= human_field_name(:kind, Transaction)
-    %th= human_field_name(:amount, Transaction)
-    %th= human_field_name(:description, Transaction)
-    %th
-  - @transactions.each do |t|
-    %tr
-      %td.center= check_box_tag "id[]", t.id, false, :class => "child"
-      %td.center= t.date
-      %td= t.account.name
-      %td= t.category.name
-      %td= t.kind_name
-      %td.number= to_currency(t.amount)
-      %td= t.description
-      %td.center= link_to I18n.t("action.edit"), edit_app_transaction_path(t)
-= paginate @transactions
+          -#.final
+
+  .right.span-18.last
+    .new-section.append-bottom
+      .wrapper
+        %h3.header.bottom= I18n.t("transaction.new")
+        %hr/
+        = render "form", :transaction => @transaction
+
+    .title.append-bottom.clearfix
+      .left
+        %h3.bottom= I18n.t("transaction.list")
+      .right
+    %table.common.transactions
+      %colgroup
+        %col.checkbox
+        %col.date
+        -#%col.account
+        %col.category
+        %col.kind
+        %col.amount
+        %col.description
+        %col.action
+      %tr
+        %th
+          %input(type="checkbox" class="parent")
+        %th= human_field_name(:date, Transaction)
+        -#%th= human_field_name(:account, Transaction)
+        %th= human_field_name(:category, Transaction)
+        %th= human_field_name(:kind, Transaction)
+        %th= human_field_name(:amount, Transaction)
+        %th= human_field_name(:description, Transaction)
+        %th
+      - @transactions.each do |t|
+        %tr
+          %td.center= check_box_tag "id[]", t.id, false, :class => "child"
+          %td.center= t.date
+          -#%td= t.account.name
+          %td= t.category.name
+          %td= t.kind_name
+          %td.number= to_currency(t.amount)
+          %td= t.description
+          %td.center= link_to I18n.t("action.edit"), edit_app_transaction_path(t)
 

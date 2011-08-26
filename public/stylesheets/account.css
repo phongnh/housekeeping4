@@ -13,6 +13,10 @@
   /*padding: 10px;*/
 /*}*/
 
+#content {
+
+}
+
 table.accounts col.name {
   width: 160px;
 }

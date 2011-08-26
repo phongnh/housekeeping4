@@ -1,3 +1,4 @@
+# encoding: utf-8
 # == Schema Information
 #
 # Table name: accounts
@@ -15,18 +16,25 @@
 #
 
 class Account < ActiveRecord::Base
+  include Rails.application.routes.url_helpers
+
   DEFAULT_SELECT = "transactions.*, SUM(amount) AS sum_amount"
 
   belongs_to :owner, :class_name => "User", :foreign_key => :owner_id
   belongs_to :account_type
 
-  has_many :transactions
+  has_many :transactions,
+           #:include => [ :account, :category ],
+           :include => [ :category ],
+           :order => "date DESC, created_at DESC"
+
   has_many :daily_transactions,
            :class_name => "Transaction",
            :foreign_key => :account_id,
            :group => [:kind, :date],
            :conditions => { :date => Date.today },
            :select => DEFAULT_SELECT
+
   has_many :monthly_transactions,
            :class_name => "Transaction",
            :foreign_key => :account_id,
@@ -36,6 +44,7 @@ class Account < ActiveRecord::Base
              :month => Date.today.month
            },
            :select => DEFAULT_SELECT
+
   has_many :yearly_transactions,
            :class_name => "Transaction",
            :foreign_key => :account_id,
@@ -44,6 +53,7 @@ class Account < ActiveRecord::Base
            :select => DEFAULT_SELECT
 
   delegate :name, :to => :account_type, :prefix => :type
+  #delegate :size, :count, :to => :transactions, :prefix => :transaction
 
   scope :associated, includes(:account_type)
   scope :ordered, order([:name, :created_at])
@@ -65,6 +75,15 @@ class Account < ActiveRecord::Base
 
   def exported_name
     name.strip.gsub(/\s+/, "_")
+  end
+
+  def link
+    # Workaround for 'all' account link
+    id? ? app_account_transactions_path(self) : app_accounts_transactions_path
+  end
+
+  def transaction_size
+    transactions.size
   end
 
   def export!(file_name)
@@ -183,10 +202,16 @@ class Account < ActiveRecord::Base
     to     = options[:to]
     amount = options[:amount]
 
-    from = Account.find(from) unless from.instance_of? Account
-    to   = Account.find(to) unless to.instance_of? Account
+    from = self.find(from) unless from.instance_of? self
+    to   = self.find(to) unless to.instance_of? self
 
     from.transfer!(to, amount, options[:date])
+  end
+
+  def self.create_total_account(transactions)
+    account = self.new :name => "Tất cả"
+    account.transactions = transactions
+    account
   end
 
   protected

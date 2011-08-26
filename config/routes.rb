@@ -7,12 +7,16 @@ Housekeeping4::Application.routes.draw do
     root :to => "dashboard#index"
     match "dashboard", :to => "dashboard#index"
     resources :transactions
-    resources :finances, :as => "transactions"
-    resources :statistics
-    resources :reports
+    #resources :statistics
+    #resources :reports
     resources :categories
     resources :accounts
-    resources :settings
+    #resources :settings
+    resources :accounts do
+      resources :transactions
+    end
+    # URL for 'all' account
+    match "accounts/:account_id/transactions", :to => "transactions#index", :account_id => 0, :as => :accounts_transactions
   end
 
   # The priority is based upon order of creation:

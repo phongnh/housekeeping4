@@ -20,6 +20,8 @@
 
 class Transaction < ActiveRecord::Base
   #default_scope includes(:owner, :account, :category)
+  #include ActionController::UrlWriter
+  include Rails.application.routes.url_helpers
 
   before_create :update_date
 
@@ -38,8 +40,10 @@ class Transaction < ActiveRecord::Base
   # TODO: Add more validation of account_id and category_id
   validates :account_id, :date, :category_id, :amount, :kind, :presence => true
   validates :amount,
-            :numericality => { :only_integer => true, :greater_than => 0, :allow_nil => true },
-            :length       => { :maximum => 15, :allow_nil => true }
+            :numericality => {
+              :only_integer => true, :greater_than => 0, :allow_nil => true
+            },
+            :length => { :maximum => 15, :allow_nil => true }
   validates :kind, :inclusion => { :in => TYPES.keys }
 
   def is_income?
@@ -80,6 +84,27 @@ class Transaction < ActiveRecord::Base
 
   def self.csv_header(delimiter=",")
     header.join(delimiter)
+  end
+
+  def self.by_account_id(account_id)
+    account_id = account_id.to_i
+    accounts = Account.select([:id, :name]).includes(:transactions).all
+
+    # Account is 'all'
+    if account_id == 0
+      transactions = accounts.inject([]) { |sum, a| sum + a.transactions }
+      all_transactions = transactions
+    else
+      transactions = []
+      account = accounts.detect { |a| a.id == account_id }
+      transactions = account.transactions if account
+    end
+
+    # Add total account at first of accounts
+    all_transactions ||= accounts.inject([]) { |sum, a| sum + a.transactions }
+    accounts.insert 0, Account.create_total_account(all_transactions)
+
+    [accounts, transactions]
   end
 
   protected

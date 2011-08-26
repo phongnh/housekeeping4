@@ -1,6 +1,16 @@
 class App::TransactionsController < AppController
   def index
-    @transactions = Transaction.associated.ordered.page(params[:page]).per(10)
+    #@accounts = Account.includes(:transactions).all
+
+    #account = @accounts.detect { |a| a.id == params[:account_id].to_i }
+
+    #@accounts.insert 0, Account.new(:name => "Tât cả")
+    #if account
+      #@transactions = account.transactions.associated.ordered
+    #else
+      #@transactions = Transaction.associated.ordered
+    #end
+    @accounts, @transactions = Transaction.by_account_id(params[:account_id])
     @transaction = Transaction.new
   end
 
@@ -16,7 +26,7 @@ class App::TransactionsController < AppController
   rescue Exception => ex
     puts ex.message
     puts ex.backtrace
-    @transactions = Transaction.associated.ordered.page(params[:page]).per(10)
+    @transactions = Transaction.associated.ordered
     render :action => "index"
   end
 

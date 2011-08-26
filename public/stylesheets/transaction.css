@@ -13,6 +13,39 @@
   /*padding: 10px;*/
 /*}*/
 
+.accounts .link {
+  color: #FF7700;
+  font-weight: bold;
+  border-top: 1px solid #CCC;
+  padding: 10px;
+  text-decoration: none;
+}
+
+
+.accounts .final {
+  border-radius: 0 0 8px 8px;
+  -moz-border-radius: 0 0 8px 8px;
+  -webkit-border-radius: 0 0 8px 8px;
+}
+
+.accounts .link.selected,
+.accounts .link:hover {
+  background-color: #E0E0E0;
+}
+
+.accounts .link .name {
+  width: 150px;
+}
+
+.accounts .link .size {
+  border-radius: 8px;
+  -moz-border-radius: 8px;
+  -webkit-border-radius: 8px;
+  background-color: green;
+  color: white;
+  padding: 0 10px;
+}
+
 table.transactions col.date {
   width: 80px;
 }
@@ -52,7 +85,7 @@ form.transaction input[type=text] {
 }
 
 form.transaction select {
-  width: 256px;
+  width: 255.5px;
 }
 
 form.transaction input[type=submit] {

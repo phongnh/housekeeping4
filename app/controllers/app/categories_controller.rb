@@ -1,6 +1,6 @@
 class App::CategoriesController < AppController
   def index
-    @categories = Category.root.page(params[:page]).per(10)
+    @categories = Category.root
     @category = Category.new
   end
 

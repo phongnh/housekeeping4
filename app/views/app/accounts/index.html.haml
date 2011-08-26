@@ -10,6 +10,7 @@
 %h2.bottom= I18n.t("account.list")
 %table.common.accounts
   %colgroup
+    %col.checkbox
     %col.name/
     %col.type/
     %col.income/
@@ -17,6 +18,8 @@
     %col.balance/
     %col.description/
   %tr
+    %th
+      %input(type="checkbox" class='parent')
     %th= human_field_name(:name, Account)
     %th= human_field_name(:account_type, Account)
     %th= human_field_name(:income, Account)
@@ -25,11 +28,11 @@
     %th= human_field_name(:description, Account)
   - @accounts.each do |a|
     %tr
+      %td= check_box_tag 'id[]', a.id, false, :class => :child
       %td= a.name
       %td= a.type_name
       %td.number= to_currency(a.income)
       %td.number= to_currency(a.expense)
       %td.number= to_currency(a.balance)
       %td= a.description
-= paginate @accounts
 
