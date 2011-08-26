@@ -18,7 +18,6 @@ def create_sample_users
   puts "-> Finished."
 end
 
-
 def create_sample_accounts
   puts "-> Creating sample accounts..."
   users = User.all.collect(&:id)

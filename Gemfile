@@ -6,47 +6,35 @@ gem 'rails', '3.0.9'
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
 gem 'haml'
-
 gem 'sass'
 
-gem 'annotate'
-
 gem 'inherited_resources'
-
 gem 'has_scope'
-
 gem 'responders'
-
+gem 'formtastic'
 gem 'simple_form'
-
 gem 'mail_form'
-
 gem 'devise'
-
 gem 'cancan'
-
 gem 'kaminari'
-
-gem 'sqlite3'
 
 gem 'pg'
 
-gem 'faker'
-
-gem 'formtastic'
-
 group :development do
-  gem "haml-rails"
+  gem 'faker'
+  gem 'sqlite3'
+  gem 'annotate'
   gem 'jquery-rails'
+  gem 'haml-rails'
   gem 'hirb'
   gem 'wirble'
 end
 
 group :test, :development do
-  gem "rspec"
-  gem "rspec-rails"
-  gem "cucumber"
-  gem "cucumber-rails"
+  gem 'rspec'
+  gem 'rspec-rails'
+  gem 'cucumber'
+  gem 'cucumber-rails'
   gem 'launchy'
   gem 'capybara'
   gem 'database_cleaner'
