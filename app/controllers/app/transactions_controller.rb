@@ -19,14 +19,17 @@ class App::TransactionsController < AppController
   end
 
   def create
+    account_id = params[:transaction][:account_id]
+    account = Account.find account_id
     @transaction = Transaction.new params[:transaction]
     @transaction.owner = User.first
+    @transaction.account = account
     @transaction.save_and_update_account!
-    redirect_to app_transactions_path
+    redirect_to app_account_transactions_path(account)
   rescue Exception => ex
     puts ex.message
     puts ex.backtrace
-    @transactions = Transaction.associated.ordered
+    @accounts, @transactions = Transaction.by_account_id account_id
     render :action => "index"
   end
 
