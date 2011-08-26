@@ -16,7 +16,7 @@ gem 'simple_form'
 gem 'mail_form'
 gem 'devise'
 gem 'cancan'
-gem 'kaminari'
+gem 'will_paginate'
 
 gem 'pg'
 
@@ -27,7 +27,8 @@ group :development do
   gem 'jquery-rails'
   gem 'haml-rails'
   gem 'hirb'
-  gem 'wirble'
+  gem 'pry'
+  gem 'mongrel'
 end
 
 group :test, :development do
