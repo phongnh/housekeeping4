@@ -17,7 +17,7 @@ gem 'mail_form'
 gem 'devise'
 gem 'cancan'
 gem 'will_paginate'
-
+gem 'kaminari'
 gem 'pg'
 
 group :development do
