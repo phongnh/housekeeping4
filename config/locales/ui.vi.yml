@@ -23,6 +23,11 @@ vi:
         one:   "tài khoản"
         few:   "tài khoản"
         other: "tài khoản"
+      transaction:
+        zero:  "giao dịch"
+        one:   "giao dịch"
+        few:   "giao dịch"
+        other: "giao dịch"
 
     #line_item:
     #  page_entries_info:
