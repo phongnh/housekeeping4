@@ -63,7 +63,7 @@ table.transactions col.kind {
 }
 
 table.transactions col.amount {
-  width: 160px;
+  width: 130px;
 }
 
 table.transactions col.description {

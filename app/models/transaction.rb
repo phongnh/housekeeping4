@@ -22,6 +22,7 @@ class Transaction < ActiveRecord::Base
   #default_scope includes(:owner, :account, :category)
   #include ActionController::UrlWriter
   include Rails.application.routes.url_helpers
+  self.per_page = 50
 
   before_create :update_date
 
@@ -34,6 +35,7 @@ class Transaction < ActiveRecord::Base
   delegate :name, :to => :category, :prefix => :category
 
   scope :associated, includes(:account, :category)
+  scope :with_categories, includes(:category)
   scope :ordered, order("date DESC, created_at DESC")
   scope :recent, associated.ordered
 
@@ -82,28 +84,38 @@ class Transaction < ActiveRecord::Base
     self
   end
 
+  def self.save_and_update_account!(transaction_params)
+    new(transaction_params).save_and_update_account!
+  end
+
   def self.csv_header(delimiter=",")
     header.join(delimiter)
   end
 
-  def self.by_account_id(account_id)
-    account_id = account_id.to_i
-    accounts = Account.select([:id, :name]).includes(:transactions).all
+  def self.by_account_id(*args)
+    options = args.extract_options!
+    accounts = Account.select([:id, :name]).all
+    account_id = options[:account_id].to_i
+    page = options[:page]
 
     # Account is 'all'
     if account_id == 0
-      transactions = accounts.inject([]) { |sum, a| sum + a.transactions }
-      all_transactions = transactions
+      transactions = self.where(:account_id => accounts.map(&:id)).
+                          with_categories.ordered.page(page).all
     else
       transactions = []
-      account = accounts.detect { |a| a.id == account_id }
-      transactions = account.transactions if account
+      account = accounts.detect{ |a| a.id == account_id }
+      transactions = account.transactions.with_categories.page(page).all if account
     end
 
-    # Add total account at first of accounts
-    all_transactions ||= accounts.inject([]) { |sum, a| sum + a.transactions }
-    accounts.insert 0, Account.create_total_account(all_transactions)
+    transaction_sizes = self.where(:account_id => accounts.map(&:id)).
+                             group(:account_id).count
 
+    accounts_hash = accounts.inject({}) { |h, a| h[a.id] = a; h }
+
+    transaction_sizes.each { |k, v| accounts_hash[k].transactions_size = v }
+
+    accounts.insert 0, Account.create_total_account(transaction_sizes.values.sum)
     [accounts, transactions]
   end
 

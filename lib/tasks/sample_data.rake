@@ -21,6 +21,15 @@ namespace :db do
       create_sample_accounts args[:num].to_i
     end
 
+    desc "Create sample transactions"
+    task :transactions, :num, :needs => :environment do |t, args|
+      args.with_defaults :num => 20
+      file = File.join(Rails.root, 'db', 'sample_data.rb')
+      load file
+      create_sample_transactions args[:num].to_i
+    end
+
+
   end
 end
 

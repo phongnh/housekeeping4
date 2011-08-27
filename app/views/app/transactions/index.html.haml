@@ -12,7 +12,7 @@
             - selected_css_class = (a.id.to_i == params[:account_id].to_i) ? :selected : nil
             = link_to a.link, :class => [ :link, :clearfix, final_css_class, selected_css_class] do
               .left.name= a.name
-              .right.size= a.transaction_size
+              .right.size= a.transactions_size
 
           -#.final
 
@@ -27,6 +27,10 @@
       .left
         %h3.bottom= I18n.t("transaction.list")
       .right
+    #toolbar.clearfix
+      .left
+        %input#delete-button.action{ :type => "submit", :value => I18n.t('action.delete'), :disabled => @transactions.empty?, :class => "#{!@transactions.empty?}" }/
+      .right= show_pagination(@transactions)
     %table.common.transactions
       %colgroup
         %col.checkbox
@@ -57,4 +61,6 @@
           %td.number= to_currency(t.amount)
           %td= t.description
           %td.center= link_to I18n.t("action.edit"), edit_app_transaction_path(t)
+    .toolbar.clearfix
+      .right= show_pagination(@transactions)
 

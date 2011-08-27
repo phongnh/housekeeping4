@@ -15,7 +15,7 @@ module ApplicationHelper
   def show_pagination(collection, options={})
     content_tag :div, :class => "custom_pagination" do
       content_tag(:div, page_entries_info(collection), :class => "page_info") +
-        will_paginate(collection, :class => "pagination").to_s.html_safe
+        will_paginate(collection, :inner_window => 2, :class => "pagination").to_s.html_safe
     end
   end
 end

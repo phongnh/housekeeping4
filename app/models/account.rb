@@ -86,8 +86,12 @@ class Account < ActiveRecord::Base
     app_account_transactions_path(self.id.to_i)
   end
 
-  def transaction_size
-    transactions.size
+  def transactions_size
+    @size ||= transactions.size
+  end
+
+  def transactions_size=(size)
+    @size = size
   end
 
   def export!(file_name)
@@ -212,9 +216,9 @@ class Account < ActiveRecord::Base
     from.transfer!(to, amount, options[:date])
   end
 
-  def self.create_total_account(transactions)
+  def self.create_total_account(transactions_size)
     account = self.new :name => "Tất cả"
-    account.transactions = transactions
+    account.transactions_size = transactions_size
     account
   end
 

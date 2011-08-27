@@ -1,16 +1,6 @@
 class App::TransactionsController < AppController
   def index
-    #@accounts = Account.includes(:transactions).all
-
-    #account = @accounts.detect { |a| a.id == params[:account_id].to_i }
-
-    #@accounts.insert 0, Account.new(:name => "Tât cả")
-    #if account
-      #@transactions = account.transactions.associated.ordered
-    #else
-      #@transactions = Transaction.associated.ordered
-    #end
-    @accounts, @transactions = Transaction.by_account_id(params[:account_id])
+    @accounts, @transactions = Transaction.by_account_id(params)
     @transaction = Transaction.new
   end
 
