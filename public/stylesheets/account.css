@@ -22,6 +22,10 @@
   margin: 0;
 }
 
+#toolbar .action.false {
+  cursor: default;
+}
+
 #toolbar .action.true:hover {
   background-color: #808080;
   color: white;

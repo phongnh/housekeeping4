@@ -12,7 +12,7 @@
 = form_tag delete_app_accounts_path do
   #toolbar.clearfix
     .left
-      %input#delete-button.action{ :type => "submit", :value => I18n.t("action.delete"), :disabled => @accounts.empty?, :class => !@accounts.empty? }/
+      %input#delete-button.action{ :type => "submit", :value => I18n.t("action.delete"), :disabled => @accounts.empty?, :class => "#{!@accounts.empty?}" }/
     .right= show_pagination(@accounts)
   %table.common.accounts
     %colgroup
