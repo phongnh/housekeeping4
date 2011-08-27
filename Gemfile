@@ -18,9 +18,9 @@ gem 'devise'
 gem 'cancan'
 gem 'will_paginate'
 gem 'pg'
+gem 'faker'
 
 group :development do
-  gem 'faker'
   gem 'sqlite3'
   gem 'annotate'
   gem 'jquery-rails'
