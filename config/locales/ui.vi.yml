@@ -1,4 +1,37 @@
 vi:
+  will_paginate:
+    previous_label: "Trước"
+    next_label: "Sau"
+    page_gap: "&hellip;"
+
+    page_entries_info:
+      single_page:
+        zero:  "Bạn chưa có dữ liệu!"
+        one:   "[Đang xem 1 - 1 của 1 %{model}]"
+        other: "[Đang xem tất cả %{count} %{model}]"
+      single_page_html:
+        zero:  "<b class='highlight'>Bạn&nbsp;chưa&nbsp;có&nbsp;dữ&nbsp;liệu!</b>"
+        one:   "[Đang xem <b>1</b>&nbsp;-&nbsp;<b>1</b> của <b>1</b> %{model}]"
+        other: "[Đang xem <b>tất&nbsp;cả&nbsp;%{count}</b> %{model}]"
+
+      multi_page: "[Đang xem %{from} - %{to} của %{count} %{model}]"
+      multi_page_html: "[Đang xem <b>%{from}&nbsp;-&nbsp;%{to}</b> của <b>%{count}</b> %{model}]"
+
+    models:
+      account:
+        zero:  "tài khoản"
+        one:   "tài khoản"
+        few:   "tài khoản"
+        other: "tài khoản"
+
+    #line_item:
+    #  page_entries_info:
+    #    single_page:
+    #      zero:  "Your shopping cart is empty"
+    #      one:   "Displaying one item in your cart"
+    #      other: "Displaying all %{count} items"
+    #    multi_page: "Displaying items %{from} - %{to} of %{count} in total"
+
   app:
     menu:
       dashboard: "Tổng quan"
@@ -10,12 +43,14 @@ vi:
     edit: "Sửa"
     logout: "Thoát"
     help: "Trợ giúp"
+    delete: "Xóa"
   label:
     transactions: "Giao dịch"
     accounts: "Tài khoản"
   account:
     new: "Tạo mới tài khoản"
     list: "Danh sách tài khoản"
+    warning: "Tất cả các giao dịch sẽ bị xóa khi xóa tài khoản!"
   transaction:
     new: "Tạo mới giao dịch"
     list: "Danh sách giao dịch"

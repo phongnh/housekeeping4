@@ -26,7 +26,8 @@ class Account < ActiveRecord::Base
   has_many :transactions,
            #:include => [ :account, :category ],
            :include => [ :category ],
-           :order => "date DESC, created_at DESC"
+           :order => "date DESC, created_at DESC",
+           :dependent => :destroy
 
   has_many :daily_transactions,
            :class_name => "Transaction",
@@ -65,6 +66,9 @@ class Account < ActiveRecord::Base
   # TODO: Remove changing account's expense and income directly
   attr_accessible :owner_id, :account_type_id, :name, :description, :expense, :income
 
+  # Default per_page for will_paginate
+  self.per_page = 10
+
   def transferable?(amount)
     balance >= amount
   end
@@ -79,7 +83,7 @@ class Account < ActiveRecord::Base
 
   def link
     # Workaround for 'all' account link
-    id? ? app_account_transactions_path(self) : app_accounts_transactions_path
+    app_account_transactions_path(self.id.to_i)
   end
 
   def transaction_size

@@ -12,13 +12,30 @@
 /*#new-account-section .wrapper {*/
   /*padding: 10px;*/
 /*}*/
+#toolbar .action {
+  border: 1px solid #a7a7a7;
+  -webkit-border-radius: 8px;
+  -moz-border-radius: 8px;
+  border-radius: 8px;
+  background-color: #adadad;
+  cursor: pointer;
+  margin: 0;
+}
 
-#content {
+#toolbar .action:hover {
+  background-color: #808080;
+  color: white;
+}
 
+#toolbar input.delete-button {
+  background-image: url(/images/gnome/delete_16.png);
+  background-repeat: no-repeat;
+  background-position: 5px;
+  padding: 2px 8px 2px 22px;
 }
 
 table.accounts col.name {
-  width: 160px;
+  width: 180px;
 }
 
 table.accounts col.type {
@@ -28,7 +45,7 @@ table.accounts col.type {
 table.accounts col.income,
 table.accounts col.expense,
 table.accounts col.balance {
-  width: 160px;
+  width: 130px;
 }
 
 table.accounts col.description {

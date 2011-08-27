@@ -19,8 +19,8 @@ end
 
 def create_sample_accounts(count=10)
   puts "-> Creating sample accounts..."
-  users = User.select(:id).collect(&:id)
   types = AccountType.select(:id).collect(&:id)
+  users = User.select(:id).collect(&:id)
   count.times do |i|
     Account.create :owner_id => users.sample,
                    :name => Faker::Company.name,

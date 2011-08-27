@@ -14,6 +14,9 @@ Housekeeping4::Application.routes.draw do
     #resources :settings
     resources :accounts do
       resources :transactions
+      collection do
+        match "delete(/:id)", :to => "accounts#destroy", :via => [:post, :delete], :as => :delete
+      end
     end
     # URL for 'all' account
     match "accounts/:account_id/transactions", :to => "transactions#index", :account_id => 0, :as => :accounts_transactions

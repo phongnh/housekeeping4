@@ -1,6 +1,6 @@
 class App::AccountsController < AppController
   def index
-    @accounts = Account.associated.ordered
+    @accounts = Account.associated.ordered.page(params[:page])
     @account  = Account.new
   end
 
@@ -14,7 +14,7 @@ class App::AccountsController < AppController
     if @account.save
       redirect_to app_accounts_path
     else
-      @accounts = Account.includes(:owner).order([:owner_id, :name])
+      @accounts = Account.associated.ordered.page(params[:page])
       render :action => "index"
     end
   end
@@ -35,13 +35,7 @@ class App::AccountsController < AppController
 
   def destroy
     @account = Account.find(params[:id])
-    @account.destroy
-    redirect_to app_accounts_path
-  end
-
-  def delete
-    @accounts = Accound.where :id => params[:ids]
-    @accounts.each(&:destroy)
+    @account.each(&:destroy)
     redirect_to app_accounts_path
   end
 end

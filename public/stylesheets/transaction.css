@@ -1,12 +1,12 @@
 /*#new-transaction-section {*/
   /*background-color: #FCFCFC;*/
   /*border: 1px solid #999;*/
-  /*border-radius: 8px;*/
   /*-moz-border-radius: 8px;*/
   /*-webkit-border-radius: 8px;*/
-  /*box-shadow: 0 0 8px #888;*/
+  /*border-radius: 8px;*/
   /*-moz-box-shadow: 0 0 8px #888;*/
   /*-webkit-box-shadow: 0 0 8px #888;*/
+  /*box-shadow: 0 0 8px #888;*/
 /*}*/
 
 /*#new-transaction-section .wrapper {*/
@@ -23,9 +23,9 @@
 
 
 .accounts .final {
-  border-radius: 0 0 8px 8px;
   -moz-border-radius: 0 0 8px 8px;
   -webkit-border-radius: 0 0 8px 8px;
+  border-radius: 0 0 8px 8px;
 }
 
 .accounts .link.selected,
@@ -38,9 +38,9 @@
 }
 
 .accounts .link .size {
-  border-radius: 8px;
   -moz-border-radius: 8px;
   -webkit-border-radius: 8px;
+  border-radius: 8px;
   background-color: green;
   color: white;
   padding: 0 10px;
