@@ -68,53 +68,32 @@ table.common col.auto-width {
 
 h3.header {
   padding-bottom: 5px;
-}
-
-h3 {
   font-weight: bold;
 }
 
-/*div.form div.input {*/
-    /*display: block;*/
-/*}*/
+.toolbar .action {
+  border: 1px solid #a7a7a7;
+  -webkit-border-radius: 8px;
+  -moz-border-radius: 8px;
+  border-radius: 8px;
+  background-color: #adadad;
+  cursor: pointer;
+  margin: 0;
+}
 
-/*div.form div.input * {*/
-    /*vertical-align: middle;*/
-/*}*/
+.toolbar .action.false {
+  cursor: default;
+}
 
-/*div.form div.input label.integer,*/
-/*div.form div.input label.string,*/
-/*div.form div.input label.select {*/
-    /*position: absolute;*/
-/*}*/
+.toolbar .action.true:hover {
+  background-color: #808080;
+  color: white;
+}
 
-/*div.form div.input span.error {*/
-    /*display: block;*/
-    /*color: red;*/
-    /*margin-left: 100px;*/
-/*}*/
+.toolbar input#delete-button {
+  background-image: url(/images/gnome/delete_16.png);
+  background-repeat: no-repeat;
+  background-position: 5px;
+  padding: 2px 8px 2px 22px;
+}
 
-/*div.form div.input input[type=text],*/
-/*div.form div.input select {*/
-    /*margin-left: 100px;*/
-/*}*/
-
-/*div.form div.input > div {*/
-    /*margin-left: 95px;*/
-    /*height: 24px;*/
-/*}*/
-
-/*div.form div.input > div input {*/
-/*}*/
-
-/*div.form input[type=submit] {*/
-    /*margin-left: 100px;*/
-/*}*/
-
-/*div.form div.input input[type=text] {*/
-    /*width: 200px;*/
-/*}*/
-
-/*div.form div.input select {*/
-    /*width: 206px;*/
-/*}*/

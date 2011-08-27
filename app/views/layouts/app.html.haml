@@ -39,5 +39,6 @@
       .container
         = render :partial => "/shared/footer"
     = javascript_include_tag :jquery
+    = javascript_include_tag "jquery-ui.datepicker.#{I18n.locale}"
     = yield :js
 

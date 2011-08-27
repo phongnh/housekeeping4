@@ -1,4 +1,7 @@
 class App::TransactionsController < AppController
+
+  before_filter :validate_params, :only => [ :destroy ]
+
   def index
     @accounts, @transactions = Transaction.by_account_id(params)
     @transaction = Transaction.new
@@ -37,14 +40,21 @@ class App::TransactionsController < AppController
   end
 
   def destroy
-    @transaction = Transaction.find(params[:id])
-    @transaction.destroy
+    # Account is 'all' account
+    transactions =
+      if params[:account_id].to_i == 0
+        Transaction
+      else
+        Transaction.where :account_id => params[:account_id]
+      end
+    transactions = transactions.find Array(params[:id])
+    transactions.each(&:destroy_and_update_account!)
     redirect_to app_transactions_path
   end
 
-  def delete
-    @transactions = Transaction.where :id => params[:id]
-    @transactions.each(&:destroy)
-    redirect_to app_accounts_path
+  private
+
+  def validate_params
+    redirect_to request.referer and return if Array(params[:id]).empty?
   end
 end

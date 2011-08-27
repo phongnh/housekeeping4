@@ -13,7 +13,11 @@ Housekeeping4::Application.routes.draw do
     resources :accounts
     #resources :settings
     resources :accounts do
-      resources :transactions
+      resources :transactions do
+        collection do
+          match 'delete(/:id)', :to => 'transactions#destroy', :via => [:post, :delete], :as => :delete
+        end
+      end
       collection do
         match "delete(/:id)", :to => "accounts#destroy", :via => [:post, :delete], :as => :delete
       end

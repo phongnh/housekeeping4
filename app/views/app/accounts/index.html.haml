@@ -1,7 +1,9 @@
 = content_for :css do
   = stylesheet_link_tag "simple_form", "account"
+
 = content_for :js do
   = javascript_include_tag "checkbox_handler", "account"
+
 .new-section.prepend-top.append-bottom
   .wrapper
     %h3.header.bottom= I18n.t("account.new")
@@ -10,7 +12,7 @@
 
 %h3.header.bottom= I18n.t("account.list")
 = form_tag delete_app_accounts_path do
-  #toolbar.clearfix
+  .toolbar.clearfix
     .left
       %input#delete-button.action{ :type => "submit", :value => I18n.t("action.delete"), :disabled => @accounts.empty?, :class => "#{!@accounts.empty?}" }/
     .right= show_pagination(@accounts)

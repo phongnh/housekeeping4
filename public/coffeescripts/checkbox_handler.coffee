@@ -27,5 +27,5 @@ class HK.CheckboxHandler
     @.getChecked = (delimiter=",") ->
       jQuery.map jQuery(":checkbox.#{_child}:checked"),
                  (element)-> element.value
-        .join delimiter
+        .join(delimiter).trim()
 

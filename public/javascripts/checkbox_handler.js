@@ -42,7 +42,7 @@ HK.CheckboxHandler = (function() {
       }
       return jQuery.map(jQuery(":checkbox." + _child + ":checked"), function(element) {
         return element.value;
-      }).join(delimiter);
+      }).join(delimiter).trim();
     };
   }
   return CheckboxHandler;

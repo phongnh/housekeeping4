@@ -88,6 +88,14 @@ class Transaction < ActiveRecord::Base
     new(transaction_params).save_and_update_account!
   end
 
+  def destroy_and_update_account!
+    self.class.transaction do
+      self.destroy
+      self.update_account!(-1)
+    end
+    self
+  end
+
   def self.csv_header(delimiter=",")
     header.join(delimiter)
   end
@@ -140,13 +148,13 @@ class Transaction < ActiveRecord::Base
     self.day   = self.date.day
   end
 
-  def update_account!
+  def update_account!(increase_or_decrease=1)
     # TODO: Use public api of account model for changing account's income and expense
     account = self.account
     options = if self.is_income?
-      { :income  => self.amount + account.income  }
+      { :income  => increase_or_decrease * self.amount + account.income  }
     else
-      { :expense => self.amount + account.expense }
+      { :expense => increase_or_decrease * self.amount + account.expense }
     end
     account.update_attributes! options
   end
