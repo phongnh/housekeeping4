@@ -22,12 +22,12 @@
   margin: 0;
 }
 
-#toolbar .action:hover {
+#toolbar .action.true:hover {
   background-color: #808080;
   color: white;
 }
 
-#toolbar input.delete-button {
+#toolbar input#delete-button {
   background-image: url(/images/gnome/delete_16.png);
   background-repeat: no-repeat;
   background-position: 5px;

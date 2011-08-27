@@ -1,6 +1,8 @@
 class App::AccountsController < AppController
+  before_filter :validate_params, :only => [:destroy]
+
   def index
-    @accounts = Account.associated.ordered.page(params[:page])
+    @accounts = Account.associated.ordered.page(params[:page]).all
     @account  = Account.new
   end
 
@@ -14,7 +16,7 @@ class App::AccountsController < AppController
     if @account.save
       redirect_to app_accounts_path
     else
-      @accounts = Account.associated.ordered.page(params[:page])
+      @accounts = Account.associated.ordered.page(params[:page]).all
       render :action => "index"
     end
   end
@@ -34,9 +36,14 @@ class App::AccountsController < AppController
   end
 
   def destroy
-    @account = Account.find(params[:id])
-    @account.each(&:destroy)
+    Account.find(Array(params[:id])).each(&:destroy)
     redirect_to app_accounts_path
+  end
+
+  private
+
+  def validate_params
+    redirect_to request.referer and return if Array(params[:id]).empty?
   end
 end
 
