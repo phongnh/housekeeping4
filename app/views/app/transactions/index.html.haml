@@ -14,7 +14,7 @@
             - final_css_class = (index == @accounts.length - 1) ? :final : nil
             - selected_css_class = (a.id.to_i == params[:account_id].to_i) ? :selected : nil
             = link_to a.link, :class => [ :link, :clearfix, final_css_class, selected_css_class] do
-              .left.name= a.name
+              .left= a.name
               .right.size= a.transactions_size
 
   .right.span-18.last
