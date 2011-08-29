@@ -1,0 +1,74 @@
+body {
+  background-color: #ececec;
+  min-width: 950px;
+}
+
+$header-color: #171717;
+$header-height: 54px;
+$menu-height: 36px;
+$radius-width: 8px;
+
+#header {
+  height: $header-height;
+  line-height: $header-height;
+  background-color: $header-color;
+
+  .logo {
+    display: block;
+    color: white;
+    font-size: 2.25em;
+    text-decoration: none;
+  }
+}
+
+#menu .link, #submenu .link {
+  color: #DADBB1;
+  font-weight: bold;
+}
+
+#menu {
+
+  background-color: #3B3B3B;
+  height: $menu-height;
+  line-height: $menu-height;
+  border-bottom: 5px solid #CCC;
+
+  .link {
+    display: block;
+    padding: 0 10px;
+
+    &:hover {
+      text-decoration: none;
+    }
+  }
+
+  .link:hover,
+  .selected {
+    background-color: rgba(255, 255, 255, 0.1);
+    color: white;
+  }
+
+}
+
+#submenu {
+  .link {
+    padding: 5px 10px;
+    margin: 0 5px;
+    background-color: rgba(0, 0, 0, 0.8);
+    border: 1px solid #171717;
+
+    @each $prefix in -moz-, -webkit-, '' {
+      #{$prefix}border-radius: $radius-width;
+    }
+
+    &:hover {
+      background-color: rgba(130, 130, 130, 0.6);
+      border: 1px solid #a8a8a8;
+      text-decoration: none;
+    }
+  }
+}
+
+#main {
+  min-height: 400px;
+}

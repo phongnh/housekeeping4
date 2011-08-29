@@ -1,0 +1,92 @@
+$radius-width: 8px;
+.accounts {
+  .link {
+    color: #FF7700;
+    font-weight: bold;
+    border-top: 1px solid #CCC;
+    padding: 10px;
+    text-decoration: none;
+
+    &.selected,
+    &:hover {
+      background-color: #e0e0e0;
+    }
+
+    .name {
+      width: 150px;
+    }
+
+    .size {
+      @each $prefix in -moz-, -webkit-, '' {
+        #{$prefix}border-radius: $radius-width;
+      }
+      background-color: green;
+      color: white;
+      padding: 0 10px;
+    }
+  }
+
+  .final {
+    @each $prefix in -moz-, -webkit-, '' {
+      #{$prefix}border-radius: 0 0 $radius-width $radius-width;
+    }
+  }
+}
+
+table.transactions {
+  col.date {
+    width: 80px;
+  }
+
+  col.account {
+    width: 180px;
+  }
+
+  col.category {
+    width: 160px;
+  }
+
+  col.kind {
+    width: 80px;
+  }
+
+  col.amount {
+    width: 130px;
+  }
+
+  col.description {
+    width: auto;
+  }
+
+  col.action {
+    width: 60px;
+  }
+}
+
+$left-width: 120px;
+$text-width: 250px;
+$select-width: $text-width + 5.5px;
+
+form.transaction {
+  label.string,
+  label.integer,
+  label.select {
+    width: $left-width;
+  }
+
+  input[type=text] {
+    width: $text-width;
+  }
+
+  select {
+    width: $select-width;
+  }
+
+  input[type=submit] {
+    margin: 5px 0 5px $left-width;
+  }
+
+  span.error {
+    margin: 2px 0 2px $left-width;
+  }
+}

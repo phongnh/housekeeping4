@@ -1,0 +1,44 @@
+.custom_pagination {
+  text-align: right;
+  padding: 0.25em 0;
+  cursor: default;
+
+  .pagination, .page_info {
+    display: inline;
+  }
+
+  .pagination {
+    padding-left: 0.75em;
+  }
+
+  a, span {
+    padding: 0.2em 0.3em;
+  }
+
+  a {
+    text-decoration: none;
+    color: black;
+
+    &:hover, &:focus {
+      text-align: underline;
+    }
+  }
+
+  .disabled {
+    color: #aaa;
+  }
+
+  .current {
+    font: {
+      style: normal;
+      weight: bold;
+    }
+    text-align: center;
+    background-color: #bebebe;
+    @each $prefix in -moz-, -webkit, '' {
+      #{$prefix}border-radius: 1em;
+    }
+    text-shadow: rgba(255, 255, 255, 0.8) 1px 1px 1px;
+  }
+
+}

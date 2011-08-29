@@ -1,0 +1,63 @@
+$left-width: 20%;
+$text-width: 79%;
+$select-width: $text-width + 0.5%;
+
+form.simple_form {
+  .input {
+    clear: left;
+    display: block;
+    margin: 5px 0;
+
+    & div > span > input[type=radio] {
+      margin: 0;
+      padding: 0;
+      vertical-align: middle;
+    }
+
+    & > div > span > label.collection_radio {
+      padding: 0 5px;
+      vertical-align: middle;
+    }
+  }
+
+  label.string,
+  label.integer,
+  label.select,
+  input[type=text],
+  select {
+    float: left;
+    vertical-align: middle;
+  }
+
+  label.string,
+  label.integer,
+  label.select {
+    display: block;
+    width: $left-width;
+  }
+
+  input[type=text] {
+    padding: 0;
+    width: $text-width;
+  }
+
+  select {
+    padding: 0;
+    width: $select-width;
+  }
+
+  span.error,
+  input[type=submit] {
+    clear: left;
+    display: block;
+  }
+
+  input[type=submit] {
+    margin: 5px 0 5px $left-width;
+  }
+
+  span.error {
+    margin: 2px 0 2px $left-width;
+    color: red;
+  }
+}

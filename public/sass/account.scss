@@ -1,0 +1,51 @@
+table.accounts {
+  col.name {
+    width: 180px;
+  }
+
+  col.type {
+    width: 120px;
+  }
+
+  col.income,
+  col.expense,
+  col.balance {
+    width: 130px;
+  }
+
+  col.description {
+    width: auto;
+  }
+
+  col.action {
+    width: 48px;
+  }
+}
+
+$left-width: 160px;
+$text-width: 300px;
+$select-width: $text-width + 5.5px;
+
+form.account {
+  label.string,
+  label.integer,
+  label.select {
+    width: $left-width;
+  }
+
+  input[type=text] {
+    width: $text-width;
+  }
+
+  select {
+    width: $select-width;
+  }
+
+  input[type=submit] {
+    margin: 5px 0 5px $left-width;
+  }
+
+  span.error {
+    margin: 2px 0 2px $left-width;
+  }
+}
