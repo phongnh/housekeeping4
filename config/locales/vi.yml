@@ -250,5 +250,6 @@ vi:
     # Default translation keys for submit FormHelper
     submit:
       create: 'Tạo %{model}'
-      update: 'Cập nhật %{model}'
+      #update: 'Cập nhật %{model}'
+      update: 'Cập nhật'
       submit: 'Lưu %{model}'
