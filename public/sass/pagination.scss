@@ -33,6 +33,8 @@
       style: normal;
       weight: bold;
     }
+    width: 1.45em;
+    display: inline-block;
     text-align: center;
     background-color: #bebebe;
     @each $prefix in -moz-, -webkit, '' {

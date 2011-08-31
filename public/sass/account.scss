@@ -1,3 +1,121 @@
+$radius-width: 8px;
+$income-color: blue;
+$expense-color: red;
+$balance-color: green;
+$margin-bottom: 5px;
+$header-color: #b8b8b8;
+
+.new-box-section {
+  margin-bottom: 5px;
+
+  .box-title {
+    &.total-header, &.month-header {
+      background-color: $header-color;
+    }
+  }
+}
+
+.account-information, .account-summary {
+
+
+  .income {
+    color: $income-color;
+  }
+
+  .expense {
+    color: $expense-color;
+  }
+
+  .balance {
+    color: $balance-color;
+  }
+}
+
+.account-information {
+  font-weight: bold;
+  //font-size: 1.25em;
+
+  .income, .expense, .balance {
+    padding: 10px;
+    border-top: 1px solid #ccc;
+  }
+
+  .income {
+    .amount {
+      background-color: $income-color;
+    }
+  }
+
+  .expense {
+    .amount {
+      background-color: $expense-color;
+    }
+  }
+
+  .balance {
+    .amount {
+      background-color: $balance-color;
+    }
+  }
+
+  @each $class in income, expense, balance {
+    .#{$class} {
+      .amount {
+        font: {
+          //size: 1.25em;
+          weight: bold;
+        }
+        @each $prefix in -moz-, -webkit-, "" {
+          #{$prefix}border-radius: $radius-width;
+        }
+        color: white;
+        padding: 0 10px;
+      }
+    }
+  }
+}
+
+.account-summary {
+  padding: 0 10px;
+
+  .income, .expense, .balance {
+    padding: 2px 0;
+  }
+  //font-size: 1.25em;
+  //padding: 0 10px 10px;
+
+  .balance {
+    //margin-bottom: $margin-bottom;
+    border-top: 1px solid #ccc;
+  }
+  @each $month in 12, 11, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1 {
+    .monthly-#{$month} {
+      //border-top: 1px solid #ccc;
+      //margin-bottom: $margin-bottom;
+    }
+  }
+}
+
+.yearly-summary {
+  font: {
+    size: 1.25em;
+    weight: bold;
+  }
+  background-color: #646464;
+  color: white;
+  padding: 5px;
+  margin-bottom: 5px;
+  border: 1px solid #999;
+  @each $prefix in -moz-, -webkit-, "" {
+    #{$prefix}border-radius: $radius-width;
+  }
+
+  a {
+    color: white;
+    text-decoration: none;
+  }
+}
+
 table.accounts {
   col.name {
     width: 180px;
