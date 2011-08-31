@@ -36,7 +36,7 @@ class Transaction < ActiveRecord::Base
 
   scope :associated, includes(:account, :category)
   scope :with_categories, includes(:category)
-  scope :ordered, order("date DESC, created_at DESC")
+  scope :ordered, order("date DESC, transactions.created_at DESC")
   scope :recent, associated.ordered
 
   # TODO: Add more validation of account_id and category_id
@@ -113,7 +113,7 @@ class Transaction < ActiveRecord::Base
     else
       transactions = []
       account = accounts.detect{ |a| a.id == account_id }
-      transactions = account.transactions.with_categories.page(page).all if account
+      transactions = account.transactions.with_categories.ordered.page(page).all if account
     end
 
     transaction_sizes = self.where(:account_id => accounts.map(&:id)).

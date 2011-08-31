@@ -1,0 +1,42 @@
+= form_tag delete_app_account_transactions_path(account_id), :method => :post do
+  .toolbar.clearfix
+    .left
+      %input#delete-button.action{ :type => "submit", :value => I18n.t('action.delete'), :disabled => transactions.empty?, :class => "#{!transactions.empty?}" }/
+    .right= show_pagination(transactions)
+  %table.common.bottom.transactions
+    %colgroup
+      %col.checkbox
+      %col.date
+      -#%col.account
+      %col.category
+      %col.kind
+      %col.amount
+      %col.description
+      %col.action
+    %tr
+      %th
+        %input{ :type => "checkbox", :class => "parent", :disabled => transactions.empty? }
+      %th= human_field_name(:date, Transaction)
+      -#%th= human_field_name(:account, Transaction)
+      %th= human_field_name(:category, Transaction)
+      %th= human_field_name(:kind, Transaction)
+      %th= human_field_name(:amount, Transaction)
+      %th= human_field_name(:description, Transaction)
+      %th
+    - transactions.each do |t|
+      %tr
+        %td.center= check_box_tag "id[]", t.id, false, :class => "child"
+        %td.center= t.date
+        -#%td= t.account.name
+        %td= t.category.name
+        %td= t.kind_name
+        %td.number= to_currency(t.amount)
+        %td= t.description
+        %td.center
+          = link_to image_tag('gnome/edit_16.png'),
+                    'javascript:void(0);',
+                    :title => I18n.t("transaction.title.edit"),
+                    :remote => true
+  .toolbar.clearfix
+    .right= show_pagination(transactions)
+

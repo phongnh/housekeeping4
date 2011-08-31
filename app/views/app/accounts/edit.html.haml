@@ -1,0 +1,75 @@
+= content_for :css do
+  = stylesheet_link_tag "simple_form", "account", "transaction"
+
+= content_for :js do
+  = javascript_include_tag "checkbox_handler", "account"
+
+#content.append-bottom.clearfix
+  .left.span-6
+    .box-section.append-bottom
+      .wrapper
+        %h3.header.bottom.center= I18n.t("account.summary")
+        -#%hr.bottom/
+        .account-information
+          .income.clearfix
+            .left= I18n.t("account.total_income")
+            .right.amount= to_currency @account.income
+          .expense.clearfix
+            .left= I18n.t("account.total_expense")
+            .right.amount= to_currency @account.expense
+          .balance.clearfix
+            .left= I18n.t("account.total_balance")
+            .right.amount= to_currency @account.balance
+
+    .yearly-summary.clearfix.center
+      -#.left
+        = link_to "&lt;".html_safe
+      %span= I18n.t('account.yearly_summary', :year => DateTime.now.year)
+      -#.right
+        = link_to "&gt;".html_safe
+
+    .new-box-section
+      .box-title.total-header.center= I18n.t("account.total")
+      .account-summary
+        .income.clearfix
+          .left= I18n.t('account.income')
+          .right= to_currency @total[INCOME]
+        .expense.clearfix
+          .left= I18n.t('account.expense')
+          .right= to_currency @total[EXPENSE]
+        .balance.clearfix
+          .left= I18n.t('account.balance')
+          .right= to_currency(@total[INCOME] - @total[EXPENSE])
+
+    -#- @summaries.in_groups_of(2, [0, 0]) do |income, expense|
+    - @summaries.each do |month, kind_amount|
+      -#- puts "income #{income.inspect} expense #{expense.inspect}"
+      .new-box-section
+        -#.box-title.month-header.center= income.first.first.mon
+        .box-title.month-header.center= month.mon
+        .account-summary
+          .income.clearfix
+            .left= I18n.t('account.income')
+            -#.right= to_currency income.last
+            .right= to_currency kind_amount[INCOME]
+          .expense.clearfix
+            .left= I18n.t('account.expense')
+            -#.right= to_currency expense.last
+            .right= to_currency kind_amount[EXPENSE]
+          .balance.clearfix
+            .left= I18n.t('account.balance')
+            -#.right= to_currency(income.last - expense.last)
+            .right= to_currency(kind_amount[INCOME] - kind_amount[EXPENSE])
+
+  .right.span-18.last
+    .new-section.append-bottom
+      .wrapper
+        %h3.header.bottom= I18n.t("account.#{params[:action]}")
+        %hr/
+        = render "form", :account => @account
+
+    .title.clearfix
+      .left
+        %h3.header.bottom= I18n.t("account.transaction", :account => @account.name)
+      .right
+    = render '/app/transactions/transactions', :transactions => @transactions, :account_id => @account.id
