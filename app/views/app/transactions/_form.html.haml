@@ -1,7 +1,7 @@
 = simple_form_for [:app, transaction] do |f|
   = f.association :account, :collection => Account.select([:id, :name]), :prompt => false
   = f.input :date, :as => :string
-  = f.association :category, :prompt => false
+  = f.association :category, :collection => Category.select([:id, :name]), :prompt => false
   = f.input :kind do
     = f.collection_radio :kind,
         NORMAL_TYPES.entries.map { |e| [e.first, I18n.t("transaction.type.#{e.last}")] },
