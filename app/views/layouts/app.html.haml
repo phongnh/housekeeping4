@@ -1,8 +1,12 @@
 !!!
 %html
   %head
-    %title Housekeeping
     = favicon_link_tag
+    %meta(content-equiv="CONTENT-TYPE" content="text/html; charset=UTF-8")/
+    %meta(http-equiv='CACHE-CONTROL' content="must-revalidate")/
+    %meta{ :"http-equiv" => 'EXPIRES', :content=> (Time.now+10.days).httpdate }/
+
+    %title Housekeeping
     = stylesheet_link_tag :blueprint, :media => "screen, projection"
     /[if lt IE 8]
       = stylesheet_link_tag :blueprint_ie, :media => "screen, projection"
@@ -20,7 +24,7 @@
             = link_to "Nguyễn Hoài Phong", "", :class => :link
             = link_to I18n.t("action.logout"), "", :class => :link
             = link_to I18n.t("action.help"), "", :class => :link
-    #menu
+    #menu.append-bottom
       .container
         - MENU_ITEMS.each do |m|
           .left
