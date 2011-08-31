@@ -23,13 +23,16 @@ class App::AccountsController < AppController
 
   def edit
     @account = Account.find(params[:id])
+    @transactions = @account.transactions.with_categories.ordered.page(params[:page]).all
+    @total, @summaries = @account.summary
   end
 
   def update
     @account = Account.find(params[:id])
 
     if @account.update_attributes(params[:account])
-      redirect_to app_accounts_path
+      #redirect_to app_accounts_path
+      redirect_to request.referer
     else
       render :action => "edit"
     end

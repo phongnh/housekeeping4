@@ -25,9 +25,10 @@ class Account < ActiveRecord::Base
 
   has_many :transactions,
            #:include => [ :account, :category ],
-           :include => [ :category ],
-           :order => "date DESC, created_at DESC",
+           #:include => [ :category ],
+           #:order => "date DESC, transactions.created_at DESC",
            :dependent => :destroy
+           #:select => "transactions.*"
 
   has_many :daily_transactions,
            :class_name => "Transaction",
@@ -92,6 +93,22 @@ class Account < ActiveRecord::Base
 
   def transactions_size=(size)
     @size = size
+  end
+
+  def summary(year=DateTime.now.year)
+    #Store account summaries according to month, kind
+    summaries = ActiveSupport::OrderedHash.new
+    #Returning data is an Ordered Hash object
+    #Calculate total summary and map summaries by month => kind => amount
+    total_summary = self.transactions.where(:year => year).group([:month, :kind]).
+         order("month DESC").sum(:amount).
+         inject({ INCOME => 0, EXPENSE => 0 }) do |total, summary|
+      summaries[summary.first.first] ||= { INCOME => 0, EXPENSE => 0 }
+      summaries[summary.first.first][summary.first.last] = summary.last
+      total[summary.first.last] += summary.last
+      total
+    end
+    [total_summary, summaries]
   end
 
   def export!(file_name)

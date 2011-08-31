@@ -3,7 +3,7 @@ class App::TransactionsController < AppController
   before_filter :validate_params, :only => [ :destroy ]
 
   def index
-    @accounts, @transactions = Transaction.by_account_id(params)
+    prepare_data
     @transaction = Transaction.new
   end
 
@@ -22,7 +22,7 @@ class App::TransactionsController < AppController
   rescue Exception => ex
     puts ex.message
     puts ex.backtrace
-    @accounts, @transactions = Transaction.by_account_id account_id
+    prepare_data
     render :action => "index"
   end
 
@@ -49,12 +49,17 @@ class App::TransactionsController < AppController
       end
     transactions = transactions.find Array(params[:id])
     transactions.each(&:destroy_and_update_account!)
-    redirect_to app_transactions_path
+    #redirect_to app_transactions_path
+    redirect_to request.referer
   end
 
   private
 
   def validate_params
     redirect_to request.referer and return if Array(params[:id]).empty?
+  end
+
+  def prepare_data
+    @accounts, @transactions = Transaction.by_account_id(params)
   end
 end

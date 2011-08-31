@@ -25,7 +25,7 @@
       %col.expense/
       %col.balance/
       %col.description/
-      %col.action/
+      -#%col.action/
     %tr
       %th
         %input{ :type => "checkbox", :class => 'parent', :disabled => @accounts.empty? }
@@ -35,7 +35,7 @@
       %th= human_field_name(:expense, Account)
       %th= human_field_name(:balance, Account)
       %th= human_field_name(:description, Account)
-      %th
+      -#%th
     - @accounts.each do |a|
       %tr
         %td= check_box_tag 'id[]', a.id, false, :class => :child
@@ -45,7 +45,7 @@
         %td.number= to_currency(a.expense)
         %td.number= to_currency(a.balance)
         %td= a.description
-        %td
+        -#%td
           = link_to image_tag('gnome/edit_16.png'), edit_app_account_path(a)
-          = link_to image_tag('gnome/delete_16.png'), edit_app_account_path(a)
+          = link_to image_tag('gnome/delete_16.png'), app_account_path(a)
 
