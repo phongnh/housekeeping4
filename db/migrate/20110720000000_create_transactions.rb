@@ -7,6 +7,8 @@ class CreateTransactions < ActiveRecord::Migration
       t.integer :day,   :limit => 1
       t.integer :account_id
       t.integer :category_id
+      t.integer :reporter_id
+      t.integer :payee_id
       t.integer :owner_id
       t.integer :amount
       t.string :description
