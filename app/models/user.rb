@@ -30,7 +30,7 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable, #:confirmable,
          :recoverable, :rememberable, :trackable, :validatable
 
-  validates :email, :first_name, :last_name, :password, :password_confirmation, 
+  validates :email, :first_name, :last_name, :password, :password_confirmation,
             :presence => true
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email, :first_name, :last_name,
@@ -38,16 +38,28 @@ class User < ActiveRecord::Base
 
   has_many :accounts, :foreign_key => :owner_id
 
-  def name
-    [first_name, last_name].compact.join(" ")
+  def name(locale=I18n.locale)
+    full_name =
+      if I18n.locale == :vi
+        [last_name, first_name]
+      else
+        [first_name, last_name]
+      end
+    full_name.compact.join(" ")
   end
 
   def self.seed
     self.create :email                 => "nhphong1406@gmail.com",
                 :first_name            => "Phong",
-                :last_name             => "Nguyen",
-                :password              => "123456",
-                :password_confirmation => "123456"
+                :last_name             => "Nguyễn Hoài",
+                :password              => "056113",
+                :password_confirmation => "056113"
+
+    self.create :email                 => "trinhtran1905@gmail.com",
+                :first_name            => "Trinh",
+                :last_name             => "Trần Mỹ",
+                :password              => "056113",
+                :password_confirmation => "056113"
   end
 
 end

@@ -47,10 +47,10 @@ class Category < ActiveRecord::Base
 
   def self.seed
     categories = [
-      { :name => "Xe cộ và Vận chuyển" },
+      { :name => "Xe cộ & Vận chuyển" },
       { :name => "Hóa đơn & Thanh toán" },
       { :name => "Giáo dục" },
-      { :name => "Giải trí" },
+      { :name => "Giải trí & Thư giản" },
       { :name => "Phí dịch vụ" },
       { :name => "Tài chính" },
       { :name => "Thực phẩm & Tiêu dùng" },

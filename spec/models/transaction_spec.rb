@@ -9,7 +9,8 @@
 #  day         :integer(1)
 #  account_id  :integer
 #  category_id :integer
-#  owner_id    :integer
+#  reporter_id :integer
+#  payee_id    :integer
 #  amount      :integer
 #  description :string(255)
 #  kind        :integer

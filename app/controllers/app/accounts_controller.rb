@@ -6,13 +6,13 @@ class App::AccountsController < AppController
     @account  = Account.new
   end
 
-  def new
-    @account = current_user.accounts.build
-  end
+  #def new
+    #@account = current_user.accounts.build
+  #end
 
   def create
     @account = Account.new(params[:account])
-    @account.owner = User.first
+    @account.owner = current_user
     if @account.save
       redirect_to app_accounts_path
     else

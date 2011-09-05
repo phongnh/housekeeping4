@@ -28,13 +28,13 @@ class AccountType < ActiveRecord::Base
   def self.seed
     types = [
       { :name => "Tiền mặt" },
-      { :name => "Ngân phiếu" },
-      { :name => "Tiền tiết kiệm" },
+      #{ :name => "Ngân phiếu" },
+      #{ :name => "Tiền tiết kiệm" },
       { :name => "Thẻ tín dụng" },
       { :name => "Thẻ ATM" },
-      { :name => "Đầu tư" },
-      { :name => "Khoản nợ" },
-      { :name => "Khác" }
+      #{ :name => "Đầu tư" },
+      #{ :name => "Khoản nợ" },
+      #{ :name => "Khác" }
     ]
     self.create types
   end

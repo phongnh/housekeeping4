@@ -15,7 +15,7 @@ class App::TransactionsController < AppController
     account_id = params[:transaction][:account_id]
     @transaction = Transaction.new params[:transaction]
     account = Account.find_by_id account_id
-    @transaction.owner = User.first
+    @transaction.reporter = current_user
     @transaction.account = account
     @transaction.save_and_update_account!
     redirect_to app_account_transactions_path(account)

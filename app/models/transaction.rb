@@ -9,7 +9,8 @@
 #  day         :integer(1)
 #  account_id  :integer
 #  category_id :integer
-#  owner_id    :integer
+#  reporter_id :integer
+#  payee_id    :integer
 #  amount      :integer
 #  description :string(255)
 #  kind        :integer
@@ -19,15 +20,13 @@
 #
 
 class Transaction < ActiveRecord::Base
-  #default_scope includes(:owner, :account, :category)
-  #include ActionController::UrlWriter
   include Rails.application.routes.url_helpers
   self.per_page = 50
 
   before_create :update_date
 
-  # TODO: Change owner to payee
-  belongs_to :owner, :class_name => "User", :foreign_key => :owner_id
+  belongs_to :reporter, :class_name => "User", :foreign_key => :reporter_id
+  belongs_to :payee, :class_name => "User", :foreign_key => :payee_id
   belongs_to :account
   belongs_to :category
 

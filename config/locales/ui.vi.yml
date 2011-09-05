@@ -46,12 +46,14 @@ vi:
       settings: "Thiết lập"
   action:
     edit: "Sửa"
-    logout: "Thoát"
     help: "Trợ giúp"
     delete: "Xóa"
+    login: "Đăng nhập"
+    logout: "Thoát"
   label:
     transactions: "Giao dịch"
     accounts: "Tài khoản"
+    welcome: "Chào"
   account:
     new: "Tạo mới tài khoản"
     edit: "Chi tiết tài khoản"
@@ -98,6 +100,9 @@ vi:
         amount: "Số tiền"
         kind: "Loại"
         description: "Mô tả"
+      user:
+        remember_me: "Ghi nhớ tôi"
+        password: "Mật khẩu"
     models:
       account: "Tài Khoản"
       transaction: "Giao Dịch"

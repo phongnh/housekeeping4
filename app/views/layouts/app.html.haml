@@ -21,9 +21,9 @@
           = link_to "HOUSEKEEPING", app_root_path, :class => :logo
         .right
           #submenu
-            = link_to "Nguyễn Hoài Phong", "", :class => :link
-            = link_to I18n.t("action.logout"), "", :class => :link
-            = link_to I18n.t("action.help"), "", :class => :link
+            %span.link= current_user.name
+            = link_to I18n.t("action.logout"), destroy_user_session_path, :class => :link
+            -#= link_to I18n.t("action.help"), "", :class => :link
     #menu.append-bottom
       .container
         - MENU_ITEMS.each do |m|

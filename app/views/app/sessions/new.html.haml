@@ -1,0 +1,44 @@
+!!!
+%html
+  %head
+    = favicon_link_tag
+    %title Housekeeping
+    = stylesheet_link_tag :blueprint, :media => "screen, projection"
+    /[if lt IE 8]
+      = stylesheet_link_tag :blueprint_ie, :media => "screen, projection"
+    = csrf_meta_tag
+  %body
+    #main{ :style => "margin-top: 200px;"}
+      .container{ :style => "width: 220px;" }
+        #flash
+          = content_tag(:div, alert, :id => 'alert') if alert
+        = form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f|
+          %p
+            = f.label :email
+            %br/
+            = f.email_field :email
+
+          %p
+            = f.label :password
+            %br/
+            = f.password_field :password
+
+          - if devise_mapping.rememberable?
+            %p
+              = f.check_box :remember_me
+              = f.label :remember_me
+
+          %p= f.submit I18n.t('action.login')
+
+    #footer{ :style => "margin-top: 280px; text-align: center;" }
+      .container{ :style => "width: 300px;" }
+        = render :partial => "/shared/footer"
+    = javascript_include_tag :jquery
+    %script{ :type => "text/javascript" }
+      :erb
+        jQuery(function() {
+            if ( jQuery("#flash").html() ) {
+                jQuery("#flash").delay(3000).slideUp();
+            }
+        });
+
