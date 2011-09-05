@@ -9,7 +9,6 @@ class CreateTransactions < ActiveRecord::Migration
       t.integer :category_id
       t.integer :reporter_id
       t.integer :payee_id
-      t.integer :owner_id
       t.integer :amount
       t.string :description
       t.integer :kind
@@ -26,7 +25,8 @@ class CreateTransactions < ActiveRecord::Migration
     add_index :transactions, [:year, :month, :day]
     add_index :transactions, :account_id
     add_index :transactions, :category_id
-    add_index :transactions, :owner_id
+    add_index :transactions, :reporter_id
+    add_index :transactions, :payee_id
     add_index :transactions, :kind
   end
 
