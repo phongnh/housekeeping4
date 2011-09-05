@@ -4,7 +4,7 @@
     = favicon_link_tag
     %meta(content-equiv="CONTENT-TYPE" content="text/html; charset=UTF-8")/
     %meta(http-equiv='CACHE-CONTROL' content="must-revalidate")/
-    %meta{ :"http-equiv" => 'EXPIRES', :content=> (Time.now+10.days).httpdate }/
+    %meta{ :"http-equiv" => 'EXPIRES', :content=> (Time.now + 1.hours).httpdate }/
 
     %title Housekeeping
     = stylesheet_link_tag :blueprint, :media => "screen, projection"
@@ -29,7 +29,8 @@
         - MENU_ITEMS.each do |m|
           .left
             - if APP_MENU[m] == params[:controller]
-              %span.link.selected= I18n.t("app.menu.#{m}")
+              -#%span.link.selected= I18n.t("app.menu.#{m}")
+              = link_to I18n.t("app.menu.#{m}"), "/#{APP_MENU[m]}", :class => [:link, :selected]
             - else
               = link_to I18n.t("app.menu.#{m}"), "/#{APP_MENU[m]}", :class => :link
     -##page

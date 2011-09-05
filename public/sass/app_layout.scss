@@ -40,6 +40,14 @@ $radius-width: 8px;
     &:hover {
       text-decoration: none;
     }
+
+    &.selected {
+      text-decoration: none;
+
+      &:hover {
+        //text-decoration: underline;
+      }
+    }
   }
 
   .link:hover,

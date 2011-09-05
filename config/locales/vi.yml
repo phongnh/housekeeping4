@@ -138,6 +138,8 @@ vi:
         odd: "phải là số chẵn"
         even: "phải là số lẻ"
         # Append your own errors here or at the model/attributes scope.
+        record_invalid: "Không hợp lệ: %{errors}"
+        <<: *errors_messages
 
       # You can define own errors for models or model attributes.
       # The values :model, :attribute and :value are always available for interpolation.
