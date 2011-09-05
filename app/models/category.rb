@@ -47,30 +47,30 @@ class Category < ActiveRecord::Base
 
   def self.seed
     categories = [
-      { :name => "Xe cộ & Vận chuyển" },
-      { :name => "Hóa đơn & Thanh toán" },
-      { :name => "Giáo dục" },
-      { :name => "Giải trí & Thư giản" },
+      { :name => "Xe cộ - Vận chuyển" },
+      { :name => "Giáo dục - Học tập" },
+      { :name => "Tiệc tùng & Hội họp" },
       { :name => "Phí dịch vụ" },
-      { :name => "Tài chính" },
-      { :name => "Thực phẩm & Tiêu dùng" },
-      { :name => "Quà tặng & Từ thiện" },
-      { :name => "Sức khỏe & Y tế" },
-      { :name => "Nhà cửa & Nội thất" },
-      { :name => "Lương" },
+      { :name => "Đồ ăn thức uống" },
+      { :name => "Quà tặng - Từ thiện" },
+      { :name => "Bảo hiểm - Sức khỏe - Y tế" },
+      { :name => "Nhà cửa - Nội thất" },
+      { :name => "Điện - Nước - Xăng - Gas" },
+      { :name => "Đồ gia dụng - Điện tử" },
+      { :name => "Lương cố định" },
+      { :name => "Tiền làm thêm" },
+      { :name => "Tiền hụi" },
       { :name => "Tiền thưởng" },
       { :name => "Tiền lãi" },
       { :name => "Tiền vay" },
-      { :name => "Nợ trả" },
+      { :name => "Tiền thuê" },
+      { :name => "Trả nợ" },
       { :name => "Cho vay/mượn" },
-      { :name => "Đầu tư" },
       { :name => "Con cái" },
-      { :name => "Làm đẹp" },
-      { :name => "Vật nuôi" },
-      { :name => "Mua sắm" },
-      { :name => "Thuế" },
+      { :name => "Mua sắm - Làm đẹp" },
+      { :name => "Cây cảnh - Vật nuôi" },
       { :name => "Du lịch" },
-      { :name => "Chưa phân loại" }
+      { :name => "Chi phí khác" }
     ]
     self.create(categories)
   end
