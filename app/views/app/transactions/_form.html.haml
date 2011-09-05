@@ -2,7 +2,7 @@
   = f.association :account, :collection => Account.select([:id, :name]), :prompt => false
   = f.input :date, :as => :string
   = f.association :category, :collection => Category.select([:id, :name]), :prompt => false
-  = f.input :kind do
+  = f.input :kind, :input_html => { :id => :transaction_kind_0 } do
     = f.collection_radio :kind,
         NORMAL_TYPES.entries.map { |e| [e.first, I18n.t("transaction.type.#{e.last}")] },
         :first, :last,

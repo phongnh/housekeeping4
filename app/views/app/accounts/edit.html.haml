@@ -1,8 +1,8 @@
 = content_for :css do
-  = stylesheet_link_tag "simple_form", "account", "transaction"
+  = stylesheet_link_tag "simple_form", "account", "transaction", "fancybox"
 
 = content_for :js do
-  = javascript_include_tag "checkbox_handler", "account"
+  = javascript_include_tag "jquery.fancybox", "checkbox_handler", "account", "transaction.edit"
 
 #content.append-bottom.clearfix
   .left.span-6

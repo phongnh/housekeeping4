@@ -34,9 +34,9 @@
         %td= t.description
         %td.center
           = link_to image_tag('gnome/edit_16.png'),
-                    'javascript:void(0);',
+                    remote_edit_app_transaction_path(t),
                     :title => I18n.t("transaction.title.edit"),
-                    :remote => true
+                    :class => "edit-transaction"
   .toolbar.clearfix
     .right= show_pagination(transactions)
 
