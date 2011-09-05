@@ -7,36 +7,46 @@ class App::TransactionsController < AppController
     @transaction = Transaction.new
   end
 
-  def new
-    @transaction = current_user.transactions.build
-  end
+  #def new
+    #@transaction = current_user.transactions.build
+  #end
 
   def create
     account_id = params[:transaction][:account_id]
-    account = Account.find account_id
     @transaction = Transaction.new params[:transaction]
+    account = Account.find_by_id account_id
     @transaction.owner = User.first
     @transaction.account = account
     @transaction.save_and_update_account!
     redirect_to app_account_transactions_path(account)
   rescue Exception => ex
-    puts ex.message
-    puts ex.backtrace
     prepare_data
     render :action => "index"
   end
 
-  def edit
-    @transaction = Transaction.find(params[:id])
+  #def edit
+  #end
+
+  def remote_edit
+    @transaction = Transaction.find params[:id]
+    render :partial => 'remote_form', :locals => { :transaction => @transaction }
   end
 
-  def update
-    @transaction = Transaction.find(params[:id])
-    if @transaction.update_attributes(params[:transaction])
-      redirect_to app_transactions_path
-    else
-      render :action => "edit"
-    end
+  #def update
+    #@transaction = Transaction.find(params[:id])
+    #if @transaction.update_attributes(params[:transaction])
+      #redirect_to app_transactions_path
+    #else
+      #render :partial => 'form', :locals => { :transaction => @transaction }
+    #end
+  #end
+
+  def remote_update
+    @transaction = Transaction.find params[:id]
+    @transaction.update_and_update_account!(params[:my_transaction])
+    render :json => { :status => :success }
+  rescue
+    render :partial => "remote_form", :locals => { :transaction => @transaction }
   end
 
   def destroy

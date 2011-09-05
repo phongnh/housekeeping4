@@ -1,0 +1,19 @@
+= simple_form_for [:app, transaction],
+  :as => :my_transaction,
+  :url => remote_update_app_transaction_path(transaction),
+  :html => { :id => "transaction_remote_form" } do |f|
+  = f.association :account, :collection => Account.select([:id, :name]), :prompt => false
+  = f.input :date, :as => :string
+  = f.association :category, :collection => Category.select([:id, :name]), :prompt => false
+  = f.input :kind do
+    = f.collection_radio :kind,
+        NORMAL_TYPES.entries.map { |e| [e.first, I18n.t("transaction.type.#{e.last}")] },
+        :first, :last,
+        :checked => NORMAL_TYPES.entries.first,
+        :collection_wrapper_tag => :div,
+        :item_wrapper_tag => :span
+  = f.input :amount, :as => :string, :input_html => { :max_length => 15 }
+  = f.input :description, :as => :string, :input_html => { :max_length => 255 }
+  = f.button :submit
+
+= javascript_include_tag "transaction.remote_edit"

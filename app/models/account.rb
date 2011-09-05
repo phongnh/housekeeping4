@@ -111,6 +111,17 @@ class Account < ActiveRecord::Base
     [total_summary, summaries]
   end
 
+  def increase(amount, on=:income)
+    send("increase_#{on}", amount)
+    save
+  end
+
+  def descrease(amount, on=:income)
+    send("descrease_#{on}", amount)
+    save
+  end
+
+
   def export!(file_name)
     transactions = self.transactions
     path = "#{Rails.root}/tmp/#{file_name}"
@@ -240,6 +251,22 @@ class Account < ActiveRecord::Base
   end
 
   protected
+
+  def increase_income(amount)
+    self.income += amount
+  end
+
+  def descrease_income(amount)
+    self.income -= amount
+  end
+
+  def increase_expense(amount)
+    self.expense += amount
+  end
+
+  def descrease_expense(amount)
+    self.expense -= amount
+  end
 
   def create_transaction!(options)
     transaction = self.transactions.build options

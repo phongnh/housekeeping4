@@ -96,6 +96,23 @@ class Transaction < ActiveRecord::Base
     self
   end
 
+  def update_and_update_account!(transaction_params)
+    self.class.transaction do
+      kind_was = self.kind_was
+      amount_was = self.amount_was
+      account = Account.find self.account_id_was
+
+      self.update_attributes! transaction_params
+
+      on = kind_was == INCOME ? :income : :expense
+      account.descrease(amount_was, on)
+
+      account = Account.find self.account_id
+      on = self.is_income? ? :income : :expense
+      account.increase(self.amount, on)
+    end
+  end
+
   def self.csv_header(delimiter=",")
     header.join(delimiter)
   end
