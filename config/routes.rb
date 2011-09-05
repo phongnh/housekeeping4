@@ -6,7 +6,12 @@ Housekeeping4::Application.routes.draw do
   namespace :app do
     root :to => "dashboard#index"
     match "dashboard", :to => "dashboard#index"
-    resources :transactions
+    resources :transactions do
+      member do
+        get :remote_edit
+        put :remote_update
+      end
+    end
     #resources :statistics
     #resources :reports
     resources :categories
