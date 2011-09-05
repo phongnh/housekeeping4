@@ -26,7 +26,7 @@
     - transactions.each do |t|
       %tr
         %td.center= check_box_tag "id[]", t.id, false, :class => "child"
-        %td.center= t.date
+        %td.center= t.formatted_date
         -#%td= t.account.name
         %td= t.category.name
         %td= t.kind_name
