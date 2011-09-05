@@ -14,14 +14,14 @@ module GlobalConstants
   MENU_ITEMS = [
     :dashboard,
     :transactions,
-    :categories,
+    #:categories,
     :accounts
   ].freeze
 
   APP_MENU = {
     :dashboard    => "app/dashboard",
     :transactions => "app/transactions",
-    :categories   => "app/categories",
+    #:categories   => "app/categories",
     :accounts     => "app/accounts"
   }.freeze
 
