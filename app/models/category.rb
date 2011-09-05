@@ -49,9 +49,9 @@ class Category < ActiveRecord::Base
     categories = [
       { :name => "Xe cộ - Vận chuyển" },
       { :name => "Giáo dục - Học tập" },
-      { :name => "Tiệc tùng & Hội họp" },
+      { :name => "Tiệc tùng - Hội họp - Vui chơi - Giải trí" },
       { :name => "Phí dịch vụ" },
-      { :name => "Đồ ăn thức uống" },
+      { :name => "Lương thực - Thực phẩm - Thức uống" },
       { :name => "Quà tặng - Từ thiện" },
       { :name => "Bảo hiểm - Sức khỏe - Y tế" },
       { :name => "Nhà cửa - Nội thất" },
