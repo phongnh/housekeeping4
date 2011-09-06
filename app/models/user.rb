@@ -49,6 +49,35 @@ class User < ActiveRecord::Base
     full_name.compact.join(" ")
   end
 
+  def account_summary
+    accounts = self.accounts.all
+    accounts_hash = accounts.inject({}) { |h, a| h[a.id] = a; h }
+    summary = Transaction.where :account_id => accounts.map(&:id)
+    on_transaction = summary.group(:kind)
+
+    # Returning data is Ordered Hash
+    on_account = summary.group([:account_id, :kind]).sum(:amount)
+    account_summaries = ActiveSupport::OrderedHash.new
+    on_account.each do |aid_kind, amount|
+      account_summaries[aid_kind.first] ||= {
+        :name => accounts_hash[aid_kind.first].name, INCOME => 0, EXPENSE => 0
+      }
+      account_summaries[aid_kind.first][aid_kind.last] = amount
+    end
+
+    now = DateTime.now
+    default_summary = { INCOME => 0, EXPENSE => 0 }
+    this_year_summary = on_transaction.where(:year => now.year)
+    this_month_summary = this_year_summary.where(:month => now.month)
+    today_summary = this_month_summary.where(:date => now.day)
+    transaction_summaries = ActiveSupport::OrderedHash.new
+    transaction_summaries[:today]      = default_summary.merge today_summary.sum(:amount)
+    transaction_summaries[:this_month] = default_summary.merge this_month_summary.sum(:amount )
+    transaction_summaries[:this_year]  = default_summary.merge this_year_summary.sum(:amount)
+
+    [account_summaries, transaction_summaries]
+  end
+
   def self.seed
     self.create :email                 => "nhphong1406@gmail.com",
                 :first_name            => "Phong",

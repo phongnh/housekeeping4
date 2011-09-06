@@ -1,3 +1,4 @@
+# encoding: utf-8
 # == Schema Information
 #
 # Table name: transactions
@@ -37,6 +38,7 @@ class Transaction < ActiveRecord::Base
   scope :with_categories, includes(:category)
   scope :ordered, order("date DESC, transactions.created_at DESC")
   scope :recent, associated.ordered
+  scope :news, associated.order("transactions.created_at DESC").limit(10)
 
   # TODO: Add more validation of account_id and category_id
   validates :account_id, :date, :category_id, :amount, :kind, :presence => true
@@ -61,6 +63,20 @@ class Transaction < ActiveRecord::Base
 
   def kind_name
     I18n.t("transaction.type.#{TYPES[kind]}")
+  end
+
+  def short_kind_name
+    I18n.t("transaction.#{TYPES[kind]}")
+  end
+
+  def sentence
+    I18n.t "transaction.sentence",
+           :date      => formatted_date,
+           :kind_name => short_kind_name.downcase,
+           #:amount    => to_currency(amount),
+           :amount    => amount,
+           :account   => account_name,
+           :category  => category_name
   end
 
   def formatted_date
@@ -161,6 +177,8 @@ class Transaction < ActiveRecord::Base
         total[summary.first.last] += summary.last
         total
       end
+    summaries.each { |k, v| summaries[k][:balance] = v[INCOME] - v[EXPENSE] }
+    total_summary[:balance] = total_summary[INCOME] - total_summary[EXPENSE]
 
     [total_summary, summaries]
   end

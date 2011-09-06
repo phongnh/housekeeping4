@@ -1,1 +1,55 @@
-Dashboard
+= content_for :css do
+  = stylesheet_link_tag "summary", "dashboard"
+
+#content.append-bottom.clearfix
+  .left.span-6
+    .new-box-section.append-bottom
+      .box-title.center= I18n.t("transaction.summary.all")
+      .transaction-summary
+        - @summaries.each do |time, summary|
+          %div{ :class => time }
+            .title.center= I18n.t("transaction.summary.#{time}")
+            .income.clearfix
+              .left= I18n.t('account.income')
+              .right= to_currency summary[INCOME]
+            .expense.clearfix
+              .left= I18n.t('account.expense')
+              .right= to_currency summary[EXPENSE]
+            .balance.clearfix
+              .left= I18n.t('account.balance')
+              .right= to_currency(summary[INCOME] - summary[EXPENSE])
+
+    .new-box-section.append-bottom
+      .box-title.center= I18n.t("account.summary")
+      .account-summary
+        - @account_summaries.each do |aid, summary|
+          .title.center= summary[:name]
+          .income.clearfix
+            .left= I18n.t('account.income')
+            .right= to_currency summary[INCOME]
+          .expense.clearfix
+            .left= I18n.t('account.expense')
+            .right= to_currency summary[EXPENSE]
+          .balance.clearfix
+            .left= I18n.t('account.balance')
+            .right= to_currency(summary[INCOME] - summary[EXPENSE])
+
+
+  .right.span-18.last
+    -#.new-section.append-bottom
+      -#.wrapper
+        -#%h3.header.bottom= I18n.t("account.warning")
+        -#%hr/
+
+    .new-section.append-bottom
+      .wrapper
+        %h3.header.bottom= I18n.t("transaction.recent")
+        %hr/
+        %ul
+          - @transactions.each do |t|
+            %li.recent-transaction=raw t.sentence
+        .clearfix
+          .right
+            = link_to I18n.t("action.view_more"), app_transactions_path
+
+

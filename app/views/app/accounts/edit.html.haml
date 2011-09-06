@@ -1,5 +1,5 @@
 = content_for :css do
-  = stylesheet_link_tag "simple_form", "account", "transaction", "fancybox"
+  = stylesheet_link_tag "simple_form", "account", "transaction", "fancybox", "summary"
 
 = content_for :js do
   = javascript_include_tag "jquery.fancybox", "checkbox_handler", "account", "transaction.edit"
@@ -21,7 +21,7 @@
             .left= I18n.t("account.total_balance")
             .right.amount= to_currency @account.balance
 
-    .yearly-summary.clearfix.center
+    .summary.clearfix.center
       -#.left
         = link_to "&lt;".html_safe
       %span= I18n.t('account.yearly_summary', :year => DateTime.now.year)
@@ -39,7 +39,8 @@
           .right= to_currency @total[EXPENSE]
         .balance.clearfix
           .left= I18n.t('account.balance')
-          .right= to_currency(@total[INCOME] - @total[EXPENSE])
+          -#.right= to_currency(@total[INCOME] - @total[EXPENSE])
+          .right= to_currency @total[:balance]
 
     -#- @summaries.in_groups_of(2, [0, 0]) do |income, expense|
     - @summaries.each do |month, kind_amount|
@@ -59,7 +60,8 @@
           .balance.clearfix
             .left= I18n.t('account.balance')
             -#.right= to_currency(income.last - expense.last)
-            .right= to_currency(kind_amount[INCOME] - kind_amount[EXPENSE])
+            -#.right= to_currency(kind_amount[INCOME] - kind_amount[EXPENSE])
+            .right= to_currency kind_amount[:balance]
 
   .right.span-18.last
     .new-section.append-bottom

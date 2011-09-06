@@ -50,6 +50,7 @@ vi:
     delete: "Xóa"
     login: "Đăng nhập"
     logout: "Thoát"
+    view_more: "Xem thêm"
   label:
     transactions: "Giao dịch"
     accounts: "Tài khoản"
@@ -59,7 +60,8 @@ vi:
     edit: "Chi tiết tài khoản"
     list: "Danh sách tài khoản"
     summary: "Thông tin tài khoản"
-    warning: "Tất cả các giao dịch sẽ bị xóa khi xóa tài khoản!"
+    warning: "Cảnh báo"
+    #warning: "Tất cả các giao dịch sẽ bị xóa khi xóa tài khoản!"
     total_income: "Tổng thu:"
     total_expense: "Tổng chi:"
     total_balance: "Số dư:"
@@ -74,12 +76,22 @@ vi:
     list: "Danh sách giao dịch"
     transfer: "Chuyển tiền đến %{account}."
     receive: "Nhận tiền từ %{account}."
+    recent: "Những giao dịch gần đây"
     type:
       income: "Thu nhập"
       expense: "Chi tiêu"
       transfer: "Chuyển khoản"
+    income: "Thu"
+    expense: "Chi"
     title:
       edit: "Sửa giao dịch này"
+    summary:
+      all: "Tình hình thu chi"
+      today: "Hôm nay"
+      this_week: "Tuần này"
+      this_month: "Tháng này"
+      this_year: "Năm này"
+    sentence: "Ngày <b>%{date}</b> <b>%{kind_name}</b> <b>%{amount}</b> trên tài khoản <b>%{account}</b> từ nguồn <b>%{category}</b>."
 
   activerecord:
     attributes:

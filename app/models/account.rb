@@ -111,6 +111,9 @@ class Account < ActiveRecord::Base
         total[summary.first.last] += summary.last
         total
       end
+    summaries.each { |k, v| summaries[k][:balance] = v[INCOME] - v[EXPENSE] }
+    total_summary[:balance] = total_summary[INCOME] - total_summary[EXPENSE]
+
     [total_summary, summaries]
   end
 
