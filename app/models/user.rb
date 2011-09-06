@@ -69,7 +69,7 @@ class User < ActiveRecord::Base
     default_summary = { INCOME => 0, EXPENSE => 0 }
     this_year_summary = on_transaction.where(:year => now.year)
     this_month_summary = this_year_summary.where(:month => now.month)
-    today_summary = this_month_summary.where(:date => now.day)
+    today_summary = this_month_summary.where(:day => now.day)
     transaction_summaries = ActiveSupport::OrderedHash.new
     transaction_summaries[:today]      = default_summary.merge today_summary.sum(:amount)
     transaction_summaries[:this_month] = default_summary.merge this_month_summary.sum(:amount )
