@@ -1,5 +1,5 @@
 = content_for :css do
-  = stylesheet_link_tag "simple_form", "transaction", 'fancybox'
+  = stylesheet_link_tag "simple_form", "account", "transaction", 'fancybox'
 
 = content_for :js do
   -#<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4/jquery.min.js"></script>
@@ -7,7 +7,7 @@
 
 #content.append-bottom.clearfix
   .left.span-6
-    .box-section
+    .box-section.append-bottom
       .wrapper
         %h3.header.bottom.center= I18n.t("label.accounts")
         .accounts
@@ -17,6 +17,40 @@
             = link_to a.link, :class => [ :link, :clearfix, final_css_class, selected_css_class] do
               .left= a.name
               .right.size= a.transactions_size
+
+    .yearly-summary.clearfix.center
+      -#.left
+        = link_to "&lt;".html_safe
+      %span= I18n.t('account.yearly_summary', :year => DateTime.now.year)
+      -#.right
+        = link_to "&gt;".html_safe
+
+    .new-box-section
+      .box-title.total-header.center= I18n.t("account.total")
+      .account-summary
+        .income.clearfix
+          .left= I18n.t('account.income')
+          .right= to_currency @total[INCOME]
+        .expense.clearfix
+          .left= I18n.t('account.expense')
+          .right= to_currency @total[EXPENSE]
+        .balance.clearfix
+          .left= I18n.t('account.balance')
+          .right= to_currency(@total[INCOME] - @total[EXPENSE])
+
+    - @summaries.each do |month, kind_amount|
+      .new-box-section
+        .box-title.month-header.center= month.mon
+        .account-summary
+          .income.clearfix
+            .left= I18n.t('account.income')
+            .right= to_currency kind_amount[INCOME]
+          .expense.clearfix
+            .left= I18n.t('account.expense')
+            .right= to_currency kind_amount[EXPENSE]
+          .balance.clearfix
+            .left= I18n.t('account.balance')
+            .right= to_currency(kind_amount[INCOME] - kind_amount[EXPENSE])
 
   .right.span-18.last
     .new-section.append-bottom

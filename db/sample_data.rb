@@ -43,7 +43,7 @@ def create_sample_transactions(count=1000)
     Transaction.save_and_update_account!(
       :date        => Date.today + days.sample.day,
       :account_id  => accounts.sample,
-      :owner_id    => users.sample,
+      :reporter_id => users.sample,
       :category_id => categories.sample,
       :amount      => (rand * 1_000_000).to_i,
       #:description => Faker::Lorem.paragraph,

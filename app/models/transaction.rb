@@ -143,6 +143,28 @@ class Transaction < ActiveRecord::Base
     [accounts, transactions]
   end
 
+  def self.summary(account_ids, year=DateTime.now.year)
+    account_ids.delete_if { |aid| aid.to_i == 0 }
+    #Store account summaries according to month, kind
+    summaries = ActiveSupport::OrderedHash.new
+    #Returning data is an Ordered Hash object
+    #Calculate total summary and map summaries by month => kind => amount
+
+    total_summary =
+      self.where(:year => year, :account_id => account_ids).group([:month, :kind]).
+        order("month DESC").sum(:amount).
+        inject({ INCOME => 0, EXPENSE => 0 }) do |total, summary|
+
+        # Format of summary [[month, kind], amount]
+        summaries[summary.first.first] ||= { INCOME => 0, EXPENSE => 0 }
+        summaries[summary.first.first][summary.first.last] = summary.last
+        total[summary.first.last] += summary.last
+        total
+      end
+
+    [total_summary, summaries]
+  end
+
   protected
 
   def self.header
