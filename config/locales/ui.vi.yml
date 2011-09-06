@@ -69,7 +69,7 @@ vi:
     total: "Tổng cộng"
     income: "Thu:"
     expense: "Chi:"
-    balance: "Dư:"
+    balance: "Số dư:"
     transaction: "Giao dịch trên tài khoản %{account}"
   transaction:
     new: "Tạo mới giao dịch"
