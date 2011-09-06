@@ -24,7 +24,7 @@
       %th= human_field_name(:description, Transaction)
       %th
     - transactions.each do |t|
-      %tr
+      %tr{ :class => cycle('even', 'odd') }
         %td.center= check_box_tag "id[]", t.id, false, :class => "child"
         %td.center= t.formatted_date
         -#%td= t.account.name
