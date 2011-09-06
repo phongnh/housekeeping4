@@ -1,0 +1,46 @@
+$radius-width: 8px;
+$income-color: blue;
+$expense-color: red;
+$balance-color: green;
+
+.income {
+  color: $income-color;
+}
+
+.expense {
+  color: $expense-color;
+}
+
+.balance {
+  color: $balance-color;
+  border-top: 1px solid #ccc;
+}
+
+.income, .expense, .balance {
+  //padding: 2px 0;
+}
+
+.summary {
+  font: {
+    size: 1.25em;
+    weight: bold;
+  }
+  background-color: #646464;
+  color: white;
+  padding: 5px;
+  margin-bottom: 5px;
+  border: 1px solid #999;
+  @each $prefix in -moz-, -webkit-, "" {
+    #{$prefix}border-radius: $radius-width;
+  }
+
+  span {
+    text-shadow: 1px 1px 1px black;
+  }
+
+  a {
+    color: white;
+    text-decoration: none;
+  }
+}
+

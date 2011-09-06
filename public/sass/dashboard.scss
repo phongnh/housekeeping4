@@ -1,0 +1,21 @@
+.transaction-summary, .account-summary {
+  padding: 5px 10px 0 10px;
+}
+
+@each $class in ".today", ".this_month", ".this_year", ".account-summary" {
+  #{$class} {
+    margin-bottom: 5px;
+
+    .title {
+      background-color: #DADBB1;
+      font: {
+        size: 1.125em;
+        weight: bold;
+      }
+    }
+  }
+}
+
+.recent-transaction {
+  padding: 2px 0;
+}
