@@ -61,6 +61,10 @@ class Transaction < ActiveRecord::Base
     kind == TRANSFER
   end
 
+  def raw_kind_name
+    TYPES[kind]
+  end
+
   def kind_name
     I18n.t("transaction.type.#{TYPES[kind]}")
   end

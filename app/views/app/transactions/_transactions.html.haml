@@ -29,7 +29,7 @@
         %td.center= t.formatted_date
         -#%td= t.account.name
         %td= t.category.name
-        %td.center= t.kind_name
+        %td.center= image_tag "#{t.raw_kind_name}.png", :title => t.kind_name
         %td.number= to_currency(t.amount)
         %td= t.description
         %td.center
