@@ -21,6 +21,8 @@
 #
 
 class Transaction < ActiveRecord::Base
+  include ActionView::Helpers::NumberHelper
+  include ApplicationHelper
   include Rails.application.routes.url_helpers
   self.per_page = 50
 
@@ -77,8 +79,7 @@ class Transaction < ActiveRecord::Base
     I18n.t "transaction.sentence",
            :date      => formatted_date,
            :kind_name => short_kind_name.downcase,
-           #:amount    => to_currency(amount),
-           :amount    => amount,
+           :amount    => to_currency(amount),
            :account   => account_name,
            :category  => category_name
   end
