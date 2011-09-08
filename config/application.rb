@@ -39,14 +39,20 @@ module Housekeeping4
 
     # JavaScript files you want as :defaults (application.js is always included).
     config.action_view.javascript_expansions[:defaults] = %w(jquery.min jquery-ui.min jquery_ujs)
-    config.action_view.javascript_expansions[:jquery] = %w(jquery.min jquery-ui.min jquery_ujs)
+    config.action_view.javascript_expansions[:jquery] = %w(
+      http://ajax.googleapis.com/ajax/libs/jquery/1.6.3/jquery.min.js
+      http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js
+      jquery_ujs
+    )
 
     # CSS files for :960gs
     config.action_view.stylesheet_expansions[:gs] = %w(960gs/reset 960gs/text 960gs/960)
     config.action_view.stylesheet_expansions[:blueprint] = %w(blueprint/screen)
     config.action_view.stylesheet_expansions[:blueprint_print] = %w(blueprint/print)
     config.action_view.stylesheet_expansions[:blueprint_ie] = %w(blueprint/ie)
-    config.action_view.stylesheet_expansions[:jquery] = %w(smoothness/jquery-ui)
+    config.action_view.stylesheet_expansions[:jquery] = %w(
+      http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/themes/smoothness/jquery-ui.css
+    )
 
     # Configure the default encoding used in templates for Ruby 1.9.
     config.encoding = "utf-8"
