@@ -2,7 +2,7 @@ class App::AccountsController < AppController
   before_filter :validate_params, :only => [:destroy]
 
   def index
-    @accounts = Account.associated.ordered.page(params[:page]).all
+    @accounts = current_user.accounts.associated.ordered.page(params[:page]).all
     @account  = Account.new
   end
 
@@ -16,7 +16,7 @@ class App::AccountsController < AppController
     if @account.save
       redirect_to app_accounts_path
     else
-      @accounts = Account.associated.ordered.page(params[:page]).all
+      @accounts = current_user.accounts.associated.ordered.page(params[:page]).all
       render :action => "index"
     end
   end
