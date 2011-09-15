@@ -51,19 +51,23 @@ class User < ActiveRecord::Base
 
   def account_summary
     accounts = self.accounts.all
-    accounts_hash = accounts.inject({}) { |h, a| h[a.id] = a; h }
+    #accounts_hash = accounts.inject({}) { |h, a| h[a.id] = a; h }
     summary = Transaction.where :account_id => accounts.map(&:id)
     on_transaction = summary.group(:kind)
 
     # Returning data is Ordered Hash
-    on_account = summary.group([:account_id, :kind]).sum(:amount)
+    #on_account = summary.group([:account_id, :kind]).sum(:amount)
     account_summaries = ActiveSupport::OrderedHash.new
-    on_account.each do |aid_kind, amount|
-      account_summaries[aid_kind.first] ||= {
-        :name => accounts_hash[aid_kind.first].name, INCOME => 0, EXPENSE => 0
+
+    accounts.each do |a|
+      account_summaries[a.id] = {
+        #:name => a.name, INCOME => 0, EXPENSE => 0
+        :name => a.name, INCOME => a.income, EXPENSE => a.expense
       }
-      account_summaries[aid_kind.first][aid_kind.last] = amount
     end
+    #on_account.each do |aid_kind, amount|
+      #account_summaries[aid_kind.first][aid_kind.last] = amount
+    #end
 
     now = DateTime.now
     default_summary = { INCOME => 0, EXPENSE => 0 }
