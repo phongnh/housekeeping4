@@ -139,7 +139,7 @@ class Transaction < ActiveRecord::Base
 
   def self.by_account_id(*args)
     options = args.extract_options!
-    accounts = Account.select([:id, :name]).all
+    accounts = options[:current_user].accounts.select([:id, :name]).all
     account_id = options[:account_id].to_i
     page = options[:page]
 

@@ -70,6 +70,7 @@ class App::TransactionsController < AppController
   end
 
   def prepare_data
+    params[:current_user] = current_user
     @accounts, @transactions = Transaction.by_account_id(params)
     @total, @summaries = Transaction.summary(@accounts.map(&:id))
   end
