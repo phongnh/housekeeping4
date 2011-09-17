@@ -14,7 +14,7 @@ class App::TransactionsController < AppController
   def create
     account_id = params[:transaction][:account_id]
     @transaction = Transaction.new params[:transaction]
-    account = Account.find_by_id account_id
+    account = current_user.accounts.find_by_id account_id
     @transaction.reporter = current_user
     @transaction.account = account
     @transaction.save_and_update_account!
@@ -70,8 +70,9 @@ class App::TransactionsController < AppController
   end
 
   def prepare_data
-    params[:current_user] = current_user
-    @accounts, @transactions = Transaction.by_account_id(params)
+    options = params.clone
+    options[:current_user] = current_user
+    @accounts, @transactions = Transaction.by_account_id(options)
     @total, @summaries = Transaction.summary(@accounts.map(&:id))
   end
 end
