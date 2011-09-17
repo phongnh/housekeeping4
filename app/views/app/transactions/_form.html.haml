@@ -1,5 +1,5 @@
 = simple_form_for [:app, transaction] do |f|
-  = f.association :account, :collection => Account.select([:id, :name]), :prompt => false
+  = f.association :account, :collection => current_user.accounts.select([:id, :name]), :prompt => false
   = f.input :date, :as => :string
   = f.association :category, :collection => Category.select([:id, :name]), :prompt => false
   = f.input :kind, :input_html => { :id => :transaction_kind_0 } do
