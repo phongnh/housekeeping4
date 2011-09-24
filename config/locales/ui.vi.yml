@@ -88,6 +88,7 @@ vi:
     summary:
       all: "Tình hình thu chi"
       today: "Hôm nay"
+      yesterday: "Hôm qua"
       this_week: "Tuần này"
       this_month: "Tháng này"
       this_year: "Năm này"
@@ -118,3 +119,4 @@ vi:
     models:
       account: "Tài Khoản"
       transaction: "Giao Dịch"
+

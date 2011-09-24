@@ -2,7 +2,7 @@
   padding: 5px 10px 0 10px;
 }
 
-@each $class in ".today", ".this_month", ".this_year", ".account-summary" {
+@each $class in ".today", ".yesterday", ".this_week", ".this_month", ".this_year", ".account-summary" {
   #{$class} {
     margin-bottom: 5px;
 
@@ -19,3 +19,4 @@
 .recent-transaction {
   padding: 2px 0;
 }
+
