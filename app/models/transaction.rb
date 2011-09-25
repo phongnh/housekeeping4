@@ -26,7 +26,7 @@ class Transaction < ActiveRecord::Base
   include Rails.application.routes.url_helpers
   self.per_page = 50
 
-  before_create :update_date
+  before_save :update_date
 
   belongs_to :reporter, :class_name => "User", :foreign_key => :reporter_id
   belongs_to :payee, :class_name => "User", :foreign_key => :payee_id
