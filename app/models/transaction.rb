@@ -164,7 +164,7 @@ class Transaction < ActiveRecord::Base
     [accounts, transactions]
   end
 
-  def self.summary(account_ids, year=DateTime.now.year)
+  def self.summary(account_ids, year=DateTime.now_in_time_zone.year)
     account_ids.delete_if { |aid| aid.to_i == 0 }
     #Store account summaries according to month, kind
     summaries = ActiveSupport::OrderedHash.new

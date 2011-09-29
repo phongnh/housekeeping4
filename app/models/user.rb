@@ -69,7 +69,7 @@ class User < ActiveRecord::Base
       #account_summaries[aid_kind.first][aid_kind.last] = amount
     #end
 
-    now = DateTime.now
+    now = DateTime.now_in_time_zone
     default_summary = { INCOME => 0, EXPENSE => 0 }
     this_year_summary = on_transaction.where(:year => now.year)
     this_month_summary = this_year_summary.where(:month => now.month)
