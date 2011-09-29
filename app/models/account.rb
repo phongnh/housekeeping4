@@ -95,7 +95,7 @@ class Account < ActiveRecord::Base
     @size = size
   end
 
-  def summary(year=DateTime.now.year)
+  def summary(year=DateTime.now_in_time_zone.year)
     #Store account summaries according to month, kind
     summaries = ActiveSupport::OrderedHash.new
     #Returning data is an Ordered Hash object

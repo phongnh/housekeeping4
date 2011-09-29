@@ -39,3 +39,10 @@ class Fixnum
     }
   }
 end
+
+class DateTime
+  def self.now_in_time_zone(time_zone=TIME_ZONE)
+    self.now.in_time_zone time_zone
+  end
+end
+

@@ -39,5 +39,7 @@ module GlobalConstants
     #AMOUNT        = 3
     #DESCRIPTION   = 4
   #end
+
+  TIME_ZONE = 'Hanoi'.freeze
 end
 
